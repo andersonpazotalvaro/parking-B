@@ -4,6 +4,28 @@ plugins {
 	id 'java'
 }
 
+allprojects {
+	repositories {
+		mavenCentral()
+	}
+
+	//spring
+	project.ext.springdevtools=["org.springframework.boot:spring-boot-devtools:${springBootVersion}"]
+
+	//spring starter
+	project.ext.springstarterweb=["org.springframework.boot:spring-boot-starter-web:${springBootVersion}"]
+
+	//JDBC
+	project.ext.springbootjdbc = ["org.springframework.boot:spring-boot-starter-jdbc:${springBootVersion}"]
+
+	//Database 'mysql:mysql-connector-java'
+	project.ext.db = [ 'org.postgresql:postgresql:42.3.3'  ]
+
+	//Lombok
+	project.ext.lombok = [ 'org.projectlombok:lombok:1.18.20' ]
+
+}
+
 group = 'co.smart.parking'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
@@ -13,10 +35,17 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	implementation project.ext.springstarterweb
+	runtimeOnly project.ext.springdevtools
+
 }
 
-tasks.named('test') {
-	useJUnitPlatform()
+springBoot {
+	buildInfo {
+		properties{
+			name="parking"
+			version= version
+		}
+	}
 }
