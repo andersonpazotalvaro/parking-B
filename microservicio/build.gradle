@@ -15,8 +15,8 @@ allprojects {
 	//spring starter
 	project.ext.springstarterweb=["org.springframework.boot:spring-boot-starter-web:${springBootVersion}"]
 
-	//JDBC
-	project.ext.springbootjdbc = ["org.springframework.boot:spring-boot-starter-jdbc:${springBootVersion}"]
+	//JPA
+	project.ext.springbootjpa = ["org.springframework.data:spring-data-jpa:${springBootVersion}"]
 
 	//Database 'mysql:mysql-connector-java'
 	project.ext.db = [ 'org.postgresql:postgresql:42.3.3'  ]
