@@ -1,5 +1,6 @@
 package co.smart.parking.usuario.comando;
 
+import co.smart.parking.vehiculo.comando.RequestVehiculoTransaccion;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,7 +18,7 @@ public class RequestUsuarioTransaccion {
 
     private String correo;
 
-
+    private RequestVehiculoTransaccion vehiculoTransaccion;
 }
 
 

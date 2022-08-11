@@ -13,10 +13,11 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter'
-    implementation 'org.projectlombok:lombok:1.18.22'
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation project.ext.springstarterweb
+	runtimeOnly project.ext.db
+	implementation project(':dominio')
+	implementation project(':aplicacion')
+	implementation project(':comun:comun-infraestructura')
 }
 
 tasks.named('test') {

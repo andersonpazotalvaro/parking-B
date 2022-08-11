@@ -14,7 +14,7 @@ repositories {
 
 dependencies {
 
-	implementation project.ext.springbootjdbc
+	implementation project.ext.springbootjpa
 
 }
 
