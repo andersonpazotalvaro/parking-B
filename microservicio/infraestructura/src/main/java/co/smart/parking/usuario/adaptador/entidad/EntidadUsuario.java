@@ -1,5 +1,6 @@
 package co.smart.parking.usuario.adaptador.entidad;
 
+import co.smart.parking.vehiculo.adaptador.entidad.EntidadVehiculo;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -29,10 +30,15 @@ public class EntidadUsuario {
     @Column(length = 10, nullable = false)
     private String contrasena;
 
-    public EntidadUsuario(String identificacion, String correo, String nombre, String contrasena) {
+    @OneToOne
+    @JoinColumn(name = "vehiculo_id")
+    private EntidadVehiculo entidadVehiculo;
+
+    public EntidadUsuario(String identificacion, String correo, String nombre, String contrasena, EntidadVehiculo entidadVehiculo) {
         this.identificacion = identificacion;
         this.correo = correo;
         this.nombre = nombre;
         this.contrasena = contrasena;
+        this.entidadVehiculo= entidadVehiculo;
     }
 }

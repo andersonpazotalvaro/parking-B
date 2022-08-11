@@ -23,13 +23,11 @@ public class EntidadVehiculo {
 
     private boolean activo;
 
-    @ManyToOne
-    @JoinColumn(name = "usuario_id")
-    private EntidadUsuario entidadUsuario;
 
-    public EntidadVehiculo(String placa, boolean activo, EntidadUsuario entidadUsuario) {
+
+    public EntidadVehiculo(String placa, boolean activo) {
         this.placa = placa;
         this.activo = activo;
-        this.entidadUsuario = entidadUsuario;
+
     }
 }

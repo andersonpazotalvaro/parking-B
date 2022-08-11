@@ -1,20 +1,19 @@
 package co.smart.parking.vehiculo.modelo.dtoRespuesta;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class ResponseVehiculoCambiarEstado {
 
     private String mensaje;
 
     private String placa;
 
-    private int capacidadActual;
 
-    public ResponseVehiculoCambiarEstado(String mensaje, String placa, int capacidadActual) {
-        this.mensaje = mensaje;
-        this.placa = placa;
-        this.capacidadActual = capacidadActual;
-    }
+
 
 }
