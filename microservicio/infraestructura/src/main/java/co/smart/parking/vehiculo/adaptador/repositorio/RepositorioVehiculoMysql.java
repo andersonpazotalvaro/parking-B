@@ -26,7 +26,7 @@ public class RepositorioVehiculoMysql implements RepositorioVehiculo {
     @Override
     public List<Vehiculo> listarActivos() {
         Optional<List<EntidadVehiculo>> entidades = this.repositorioVehiculoJpa.findByActivoTrue();
-        //Revisar XD no se que chucha hice
+        //Revisar XD no se que chucha hicee
        return entidades.stream().map(entidad -> Vehiculo.of(String.valueOf(entidad.stream().map(ent -> Vehiculo.of(ent.getPlaca())).toList()))).toList();
 
     }
