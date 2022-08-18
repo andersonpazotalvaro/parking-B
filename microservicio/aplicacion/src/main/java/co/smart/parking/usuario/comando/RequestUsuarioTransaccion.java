@@ -1,5 +1,7 @@
 package co.smart.parking.usuario.comando;
 
+import co.smart.parking.parqueadero.comando.RequestParqueaderoTransaccion;
+import co.smart.parking.usuario.modelo.dominio.Usuario;
 import co.smart.parking.vehiculo.comando.RequestVehiculoTransaccion;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,6 +21,11 @@ public class RequestUsuarioTransaccion {
     private String correo;
 
     private RequestVehiculoTransaccion vehiculoTransaccion;
+
+    private RequestParqueaderoTransaccion parqueaderoTransaccion;
+
+
+    public static RequestUsuarioTransaccion crearDummy(){return new RequestUsuarioTransaccion();}
 }
 
 

@@ -1,10 +1,12 @@
 package co.smart.parking.parqueadero.adaptador.entidad;
 
+import co.smart.parking.usuario.adaptador.entidad.EntidadUsuario;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @NoArgsConstructor
 @Getter
@@ -22,6 +24,8 @@ public class EntidadParqueadero {
 
 
     private int capacidadActual;
+
+
 
     public EntidadParqueadero(int capacidadMaxima, int capacidadActual) {
         this.capacidadMaxima = capacidadMaxima;

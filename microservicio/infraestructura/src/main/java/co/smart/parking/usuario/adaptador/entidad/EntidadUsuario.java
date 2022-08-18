@@ -1,11 +1,13 @@
 package co.smart.parking.usuario.adaptador.entidad;
 
+import co.smart.parking.parqueadero.adaptador.entidad.EntidadParqueadero;
 import co.smart.parking.vehiculo.adaptador.entidad.EntidadVehiculo;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @NoArgsConstructor
 @Getter
@@ -33,6 +35,10 @@ public class EntidadUsuario {
     @OneToOne
     @JoinColumn(name = "vehiculo_id")
     private EntidadVehiculo entidadVehiculo;
+
+    @ManyToOne
+    @JoinColumn(name = "parqueadero_id")
+    private EntidadParqueadero entidadParqueadero;
 
     public EntidadUsuario(String identificacion, String correo, String nombre, String contrasena, EntidadVehiculo entidadVehiculo) {
         this.identificacion = identificacion;

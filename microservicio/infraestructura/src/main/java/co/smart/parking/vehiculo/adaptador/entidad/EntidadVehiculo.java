@@ -23,11 +23,21 @@ public class EntidadVehiculo {
 
     private boolean activo;
 
+    private String asd;
+
 
 
     public EntidadVehiculo(String placa, boolean activo) {
         this.placa = placa;
         this.activo = activo;
 
+    }
+
+    public EntidadVehiculo(String placa) {
+        this.placa = placa;
+    }
+
+    public String getPlaca() {
+        return placa;
     }
 }

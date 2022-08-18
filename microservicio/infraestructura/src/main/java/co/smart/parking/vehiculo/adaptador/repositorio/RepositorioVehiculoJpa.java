@@ -5,11 +5,14 @@ import co.smart.parking.vehiculo.adaptador.entidad.EntidadVehiculo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.Optional;
+
 @Repository
 public interface RepositorioVehiculoJpa extends JpaRepository<EntidadVehiculo, Long> {
 
-    EntidadVehiculo findBy();
+    EntidadVehiculo findByPlaca(String placa);
 
-    EntidadVehiculo findByActivoTrue();
+    Optional<List<EntidadVehiculo>> findByActivoTrue();
 
 }

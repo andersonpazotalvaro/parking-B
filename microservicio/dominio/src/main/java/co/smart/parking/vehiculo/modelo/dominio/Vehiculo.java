@@ -8,20 +8,22 @@ public class Vehiculo {
 
     private final String placa;
 
-    private final boolean activo;
+    private  boolean activo;
 
 
 
-    public Vehiculo(String placa, boolean activo) {
+    public Vehiculo(String placa) {
         this.placa = placa;
-        this.activo = activo;
+        this.activo= true;
 
     }
 
-    public static Vehiculo of(String placa,boolean activo,Usuario usuario) {
+    public static Vehiculo of(String placa) {
 
         //validadores de campos
 
-        return new Vehiculo(placa,activo);
+        return new Vehiculo(placa);
     }
+
+
 }
