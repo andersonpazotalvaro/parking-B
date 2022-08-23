@@ -12,18 +12,15 @@ public class Vehiculo {
 
 
 
-    public Vehiculo(String placa) {
+    public Vehiculo(String placa, boolean activo) {
         this.placa = placa;
-        this.activo= true;
+        this.activo= activo;
 
     }
 
-    public static Vehiculo of(String placa) {
 
-        //validadores de campos
 
-        return new Vehiculo(placa);
-    }
+
 
 
 }

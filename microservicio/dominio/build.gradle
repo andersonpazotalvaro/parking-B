@@ -14,6 +14,8 @@ repositories {
 
 dependencies {
 	implementation project(':comun:comun-dominio')
+	implementation project.ext.springstarterweb
+	implementation project.ext.springdevtools
 	compileOnly project.ext.lombok
 	annotationProcessor project.ext.lombok
 }

@@ -4,10 +4,12 @@ import co.smart.parking.vehiculo.RepositorioVehiculo;
 import co.smart.parking.vehiculo.adaptador.entidad.EntidadVehiculo;
 import co.smart.parking.vehiculo.modelo.dominio.Vehiculo;
 import co.smart.parking.vehiculo.modelo.dtoRespuesta.ResponseVehiculoCambiarEstado;
+import co.smart.parking.vehiculo.modelo.dtoRespuesta.ResponseVehiculoGuardar;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
-
+@Repository
 public class RepositorioVehiculoMysql implements RepositorioVehiculo {
 
     private final RepositorioVehiculoJpa repositorioVehiculoJpa;
@@ -18,17 +20,18 @@ public class RepositorioVehiculoMysql implements RepositorioVehiculo {
 
     @Override
     public List<Vehiculo> listar() {
-        List<EntidadVehiculo> entidades = this.repositorioVehiculoJpa.findAll();
+       // List<EntidadVehiculo> entidades = this.repositorioVehiculoJpa.findAll();
 
-       return entidades.stream().map(entidad -> Vehiculo.of(entidad.getPlaca())).toList();
+       //return entidades.stream().map(entidad -> Vehiculo.of(entidad.getPlaca())).toList();
+        return null;
     }
 
     @Override
     public List<Vehiculo> listarActivos() {
-        Optional<List<EntidadVehiculo>> entidades = this.repositorioVehiculoJpa.findByActivoTrue();
+        //Optional<List<EntidadVehiculo>> entidades = this.repositorioVehiculoJpa.findByActivoTrue();
         //Revisar XD no se que chucha hicee
-       return entidades.stream().map(entidad -> Vehiculo.of(String.valueOf(entidad.stream().map(ent -> Vehiculo.of(ent.getPlaca())).toList()))).toList();
-
+       //return entidades.stream().map(entidad -> Vehiculo.of(String.valueOf(entidad.stream().map(ent -> Vehiculo.of(ent.getPlaca())).toList()))).toList();
+    return null;
     }
 
 
@@ -48,5 +51,17 @@ public class RepositorioVehiculoMysql implements RepositorioVehiculo {
         }
 
         return new ResponseVehiculoCambiarEstado(mensaje,vehiculo.getPlaca());
+    }
+
+    @Override
+    public boolean existe(String placa) {
+        return this.repositorioVehiculoJpa.findByPlaca(placa) != null;
+    }
+
+    @Override
+    public ResponseVehiculoGuardar guardar(Vehiculo vehiculo) {
+        EntidadVehiculo entidad= new EntidadVehiculo(vehiculo.getPlaca());
+        EntidadVehiculo entidadDos = this.repositorioVehiculoJpa.save(entidad);
+        return new ResponseVehiculoGuardar("se guardo", vehiculo.getPlaca());
     }
 }

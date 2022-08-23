@@ -1,14 +1,23 @@
 package co.smart.parking.controlador;
 
-import co.smart.parking.usuario.comando.RequestUsuarioTransaccion;
-import co.smart.parking.usuario.modelo.dominio.Usuario;
+import co.smart.parking.vehiculo.comando.RequestVehiculoTransaccion;
+import co.smart.parking.vehiculo.comando.manejador.ManejadorGuardarVehiculo;
 import co.smart.parking.vehiculo.modelo.dtoRespuesta.ResponseVehiculoConsultar;
+import co.smart.parking.vehiculo.modelo.dtoRespuesta.ResponseVehiculoGuardar;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 
+@RestController
+@RequestMapping("vehiculo")
 public class ControladorVehiculo {
+
+   private final ManejadorGuardarVehiculo manejadorGuardarVehiculo;
+    @Autowired
+    public ControladorVehiculo(ManejadorGuardarVehiculo manejadorGuardarVehiculo) {
+        this.manejadorGuardarVehiculo = manejadorGuardarVehiculo;
+    }
 
     @GetMapping(value = "/vehiculo")
     public ResponseEntity<ResponseVehiculoConsultar> consultar(){
@@ -24,5 +33,19 @@ public class ControladorVehiculo {
         return null;
     }
 
+
+    @PostMapping
+    public ResponseEntity<ResponseVehiculoGuardar> guardarPrestamo(@RequestBody RequestVehiculoTransaccion requestVehiculoTransaccion){
+
+        try {
+            ResponseVehiculoGuardar responseVehiculoGuardar= this.manejadorGuardarVehiculo.ejecutar(requestVehiculoTransaccion);
+            return new ResponseEntity<>(responseVehiculoGuardar, HttpStatus.OK);
+        } catch (Exception exception) {
+           // ResponseVehiculoGuardar responseVehiculoGuardar = new ResponseVehiculoGuardar();
+            //return new ResponseEntity<>(ResponseVehiculoGuardar, HttpStatus.BAD_REQUEST);
+            return null;
+        }
+
+    }
 
 }

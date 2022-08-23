@@ -18,8 +18,11 @@ allprojects {
 	//JPA
 	project.ext.springbootjpa = ["org.springframework.data:spring-data-jpa:${springBootVersion}"]
 
+	//Database 'org.postgresql:postgresql:42.3.3'
+	//project.ext.db = [ 'org.postgresql:postgresql:42.3.3'  ]
+
 	//Database 'mysql:mysql-connector-java'
-	project.ext.db = [ 'org.postgresql:postgresql:42.3.3'  ]
+	project.ext.db = [ 'mysql:mysql-connector-java'  ]
 
 	//Lombok
 	project.ext.lombok = [ 'org.projectlombok:lombok:1.18.20' ]
@@ -37,6 +40,7 @@ repositories {
 dependencies {
 
 	implementation project.ext.springstarterweb
+
 	runtimeOnly project.ext.springdevtools
 
 }

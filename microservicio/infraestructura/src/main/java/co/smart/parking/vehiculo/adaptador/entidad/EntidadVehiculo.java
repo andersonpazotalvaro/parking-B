@@ -18,12 +18,13 @@ public class EntidadVehiculo {
     @GeneratedValue(strategy= GenerationType.SEQUENCE )
     private Long id;
 
-
+@Column
     private  String placa;
 
+@Column
     private boolean activo;
 
-    private String asd;
+
 
 
 
