@@ -1,14 +1,14 @@
 package co.smart.parking.vehiculo.adaptador.repositorio;
 
-import co.smart.parking.vehiculo.RepositorioVehiculo;
-import co.smart.parking.vehiculo.adaptador.entidad.EntidadVehiculo;
+import co.smart.parking.vehiculo.puerto.RepositorioVehiculo;
+import co.smart.parking.vehiculo.entidad.EntidadVehiculo;
 import co.smart.parking.vehiculo.modelo.dominio.Vehiculo;
 import co.smart.parking.vehiculo.modelo.dtoRespuesta.ResponseVehiculoCambiarEstado;
 import co.smart.parking.vehiculo.modelo.dtoRespuesta.ResponseVehiculoGuardar;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
+
 @Repository
 public class RepositorioVehiculoMysql implements RepositorioVehiculo {
 
@@ -38,7 +38,7 @@ public class RepositorioVehiculoMysql implements RepositorioVehiculo {
     @Override
     public ResponseVehiculoCambiarEstado cambiarEstado(Long id,Vehiculo vehiculo) {
 
-        EntidadVehiculo entidadVehiculo = this.repositorioVehiculoJpa.findByPlaca(vehiculo.getPlaca());
+       /* EntidadVehiculo entidadVehiculo = this.repositorioVehiculoJpa.findByPlaca(vehiculo.getPlaca());
         EntidadVehiculo nuevaEntidad = new EntidadVehiculo();
         nuevaEntidad.setId(id);
         String mensaje;
@@ -50,7 +50,8 @@ public class RepositorioVehiculoMysql implements RepositorioVehiculo {
             nuevaEntidad.setActivo(true);
         }
 
-        return new ResponseVehiculoCambiarEstado(mensaje,vehiculo.getPlaca());
+        return new ResponseVehiculoCambiarEstado(mensaje,vehiculo.getPlaca());*/
+        return null;
     }
 
     @Override

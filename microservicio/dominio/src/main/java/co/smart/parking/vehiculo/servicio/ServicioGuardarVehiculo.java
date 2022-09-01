@@ -1,6 +1,6 @@
 package co.smart.parking.vehiculo.servicio;
 
-import co.smart.parking.vehiculo.RepositorioVehiculo;
+import co.smart.parking.vehiculo.puerto.RepositorioVehiculo;
 import co.smart.parking.vehiculo.modelo.dominio.Vehiculo;
 import co.smart.parking.vehiculo.modelo.dtoRespuesta.ResponseVehiculoGuardar;
 import org.springframework.stereotype.Service;

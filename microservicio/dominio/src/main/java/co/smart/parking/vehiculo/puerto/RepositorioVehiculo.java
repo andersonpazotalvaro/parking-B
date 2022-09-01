@@ -1,4 +1,4 @@
-package co.smart.parking.vehiculo;
+package co.smart.parking.vehiculo.puerto;
 
 import co.smart.parking.vehiculo.modelo.dominio.Vehiculo;
 import co.smart.parking.vehiculo.modelo.dtoRespuesta.ResponseVehiculoCambiarEstado;

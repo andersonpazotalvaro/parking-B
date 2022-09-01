@@ -1,7 +1,7 @@
 package co.smart.parking.vehiculo.adaptador.repositorio;
 
 
-import co.smart.parking.vehiculo.adaptador.entidad.EntidadVehiculo;
+import co.smart.parking.vehiculo.entidad.EntidadVehiculo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface RepositorioParqueaderoJpa extends JpaRepository<EntidadParqueadero, Long> {
 
-    EntidadParqueadero findById();
+    EntidadParqueadero findByid(Long id);
 }

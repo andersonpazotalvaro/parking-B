@@ -1,4 +1,4 @@
-package co.smart.parking.controlador;
+package co.smart.parking.vehiculo.controlador;
 
 import co.smart.parking.vehiculo.comando.RequestVehiculoTransaccion;
 import co.smart.parking.vehiculo.comando.manejador.ManejadorGuardarVehiculo;
@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("vehiculo")
-public class ControladorVehiculo {
+public class ControladorVehiculoTransaccion {
 
    private final ManejadorGuardarVehiculo manejadorGuardarVehiculo;
     @Autowired
-    public ControladorVehiculo(ManejadorGuardarVehiculo manejadorGuardarVehiculo) {
+    public ControladorVehiculoTransaccion(ManejadorGuardarVehiculo manejadorGuardarVehiculo) {
         this.manejadorGuardarVehiculo = manejadorGuardarVehiculo;
     }
 

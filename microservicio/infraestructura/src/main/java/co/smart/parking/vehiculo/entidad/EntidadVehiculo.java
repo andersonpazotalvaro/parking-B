@@ -1,4 +1,4 @@
-package co.smart.parking.vehiculo.adaptador.entidad;
+package co.smart.parking.vehiculo.entidad;
 
 import co.smart.parking.usuario.adaptador.entidad.EntidadUsuario;
 import lombok.Getter;

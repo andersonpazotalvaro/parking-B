@@ -1,4 +1,4 @@
-package co.smart.parking.controlador;
+package co.smart.parking.usuario.controlador;
 
 import co.smart.parking.usuario.comando.RequestUsuarioTransaccion;
 import org.springframework.web.bind.annotation.GetMapping;

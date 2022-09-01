@@ -1,13 +1,12 @@
 package co.smart.parking.usuario.adaptador.entidad;
 
 import co.smart.parking.parqueadero.adaptador.entidad.EntidadParqueadero;
-import co.smart.parking.vehiculo.adaptador.entidad.EntidadVehiculo;
+import co.smart.parking.vehiculo.entidad.EntidadVehiculo;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
 
 @NoArgsConstructor
 @Getter

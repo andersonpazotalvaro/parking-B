@@ -1,4 +1,4 @@
-package co.smart.parking.controlador;
+package co.smart.parking.parqueadero.controlador;
 
 import co.smart.parking.parqueadero.comando.RequestParqueaderoTransaccion;
 import co.smart.parking.parqueadero.modelo.dtoRespuesta.ResponseParqueaderoGuardarCapacidad;
