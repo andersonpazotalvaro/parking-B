@@ -8,6 +8,8 @@ import co.smart.parking.vehiculo.modelo.dtoRespuesta.ResponseVehiculoGuardar;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Repository
 public class RepositorioVehiculoMysql implements RepositorioVehiculo {
@@ -20,28 +22,27 @@ public class RepositorioVehiculoMysql implements RepositorioVehiculo {
 
     @Override
     public List<Vehiculo> listar() {
-       // List<EntidadVehiculo> entidades = this.repositorioVehiculoJpa.findAll();
-
-       //return entidades.stream().map(entidad -> Vehiculo.of(entidad.getPlaca())).toList();
-        return null;
+        List<EntidadVehiculo> entidades = this.repositorioVehiculoJpa.findAll();
+        return entidades.stream().map(entidad -> Vehiculo.of(entidad.getPlaca(), entidad.isActivo()
+        )).collect(Collectors.toList());
     }
 
     @Override
     public List<Vehiculo> listarActivos() {
-        //Optional<List<EntidadVehiculo>> entidades = this.repositorioVehiculoJpa.findByActivoTrue();
-        //Revisar XD no se que chucha hicee
-       //return entidades.stream().map(entidad -> Vehiculo.of(String.valueOf(entidad.stream().map(ent -> Vehiculo.of(ent.getPlaca())).toList()))).toList();
-    return null;
+        List<EntidadVehiculo> entidades = this.repositorioVehiculoJpa.findByActivoTrue();
+        return entidades.stream().map(entidad -> Vehiculo.of(entidad.getPlaca(), entidad.isActivo()
+        )).collect(Collectors.toList());
     }
 
 
     @Override
-    public ResponseVehiculoCambiarEstado cambiarEstado(Long id,Vehiculo vehiculo) {
+    public ResponseVehiculoCambiarEstado cambiarEstado(Long id) {
 
-       /* EntidadVehiculo entidadVehiculo = this.repositorioVehiculoJpa.findByPlaca(vehiculo.getPlaca());
+        /*List<EntidadVehiculo> entidad = this.repositorioVehiculoJpa.findAllById(id);
         EntidadVehiculo nuevaEntidad = new EntidadVehiculo();
         nuevaEntidad.setId(id);
-        String mensaje;
+        nuevaEntidad.setPlaca(entidad.stream().map(entidadVehiculo -> entidadVehiculo.getPlaca()));
+
         if(entidadVehiculo.isActivo()){
             mensaje = "se ha inactivado";
             nuevaEntidad.setActivo(false);
@@ -64,5 +65,23 @@ public class RepositorioVehiculoMysql implements RepositorioVehiculo {
         EntidadVehiculo entidad= new EntidadVehiculo(vehiculo.getPlaca());
         EntidadVehiculo entidadDos = this.repositorioVehiculoJpa.save(entidad);
         return new ResponseVehiculoGuardar("se guardo", vehiculo.getPlaca());
+    }
+
+    @Override
+    public Boolean eliminar(Long id) {
+        repositorioVehiculoJpa.findById(id);
+        repositorioVehiculoJpa.deleteById(id);
+        return true;
+    }
+
+    @Override
+    public Boolean actualizar(Long id, Vehiculo vehiculo) {
+        repositorioVehiculoJpa.findById(id);
+        EntidadVehiculo entidadVehiculo = new EntidadVehiculo();
+        entidadVehiculo.setPlaca(vehiculo.getPlaca());
+        entidadVehiculo.setActivo(vehiculo.isActivo());
+        repositorioVehiculoJpa.save(entidadVehiculo);
+
+        return true;
     }
 }

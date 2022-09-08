@@ -18,9 +18,7 @@ public class Vehiculo {
 
     }
 
-
-
-
-
-
+    public static Vehiculo of(String placa,boolean activo){
+        return new Vehiculo(placa,activo);
+    }
 }

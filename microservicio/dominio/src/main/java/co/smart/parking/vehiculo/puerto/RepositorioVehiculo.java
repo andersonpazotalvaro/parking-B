@@ -14,9 +14,13 @@ public interface RepositorioVehiculo {
 
     List<Vehiculo> listarActivos();
 
-    ResponseVehiculoCambiarEstado cambiarEstado(Long id,Vehiculo vehiculo);
+    ResponseVehiculoCambiarEstado cambiarEstado(Long id);
 
     boolean existe(String placa);
 
     ResponseVehiculoGuardar guardar(Vehiculo vehiculo);
+
+    Boolean eliminar(Long id);
+
+    Boolean actualizar(Long id, Vehiculo vehiculo);
 }
