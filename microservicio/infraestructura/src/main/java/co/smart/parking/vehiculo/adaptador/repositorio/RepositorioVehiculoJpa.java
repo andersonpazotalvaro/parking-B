@@ -10,14 +10,13 @@ import java.util.List;
 @Repository
 public interface RepositorioVehiculoJpa extends JpaRepository<EntidadVehiculo, Long> {
 
-    EntidadVehiculo findByPlaca(String placa);
+    List<EntidadVehiculo> findByPlaca(String placa);
 
    // EntidadVehiculo findById(Long id);
 
     List<EntidadVehiculo> findByActivoTrue();
 
     //Optional<List<EntidadVehiculo>> findById(Long id);
-
 
     List<EntidadVehiculo> findAllById(Long id);
 }

@@ -7,12 +7,13 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
+
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-public class ResponseVehiculoConsultar {
+@AllArgsConstructor
+public class ResponseVehiculoConsultarTodos {
 
-    private Vehiculo vehiculo;
+    private List<Vehiculo> vehiculos;
 
 }

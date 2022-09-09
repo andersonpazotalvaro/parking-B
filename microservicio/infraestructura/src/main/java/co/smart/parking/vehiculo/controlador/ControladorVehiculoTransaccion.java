@@ -2,7 +2,7 @@ package co.smart.parking.vehiculo.controlador;
 
 import co.smart.parking.vehiculo.comando.RequestVehiculoTransaccion;
 import co.smart.parking.vehiculo.comando.manejador.ManejadorGuardarVehiculo;
-import co.smart.parking.vehiculo.modelo.dtoRespuesta.ResponseVehiculoConsultar;
+import co.smart.parking.vehiculo.modelo.dtoRespuesta.ResponseVehiculoConsultarTodos;
 import co.smart.parking.vehiculo.modelo.dtoRespuesta.ResponseVehiculoGuardar;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,7 +20,7 @@ public class ControladorVehiculoTransaccion {
     }
 
     @GetMapping(value = "/vehiculo")
-    public ResponseEntity<ResponseVehiculoConsultar> consultar(){
+    public ResponseEntity<ResponseVehiculoConsultarTodos> consultar(){
 
         /*try {
             DtoPrestamoConsultarRespuesta dtoPrestamoConsultarRespuesta=  this.servicioPrestamoConsultar.consultar(id);

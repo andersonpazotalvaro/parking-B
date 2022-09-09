@@ -1,5 +1,6 @@
 package co.smart.parking.vehiculo.adaptador.repositorio;
 
+import co.smart.parking.vehiculo.modelo.dtoRespuesta.ResponseVehiculoConsultar;
 import co.smart.parking.vehiculo.puerto.RepositorioVehiculo;
 import co.smart.parking.vehiculo.entidad.EntidadVehiculo;
 import co.smart.parking.vehiculo.modelo.dominio.Vehiculo;
@@ -8,7 +9,6 @@ import co.smart.parking.vehiculo.modelo.dtoRespuesta.ResponseVehiculoGuardar;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Repository
@@ -36,28 +36,46 @@ public class RepositorioVehiculoMysql implements RepositorioVehiculo {
 
 
     @Override
-    public ResponseVehiculoCambiarEstado cambiarEstado(Long id) {
+    public ResponseVehiculoCambiarEstado cambiarEstado(String placa) {
+        String mensaje="";
+        List<EntidadVehiculo> entidad = this.repositorioVehiculoJpa.findByPlaca(placa);
+        List<Vehiculo> list= entidad.stream().map(a -> new Vehiculo(a.getPlaca(),a.isActivo())).collect(Collectors.toList());
 
-        /*List<EntidadVehiculo> entidad = this.repositorioVehiculoJpa.findAllById(id);
-        EntidadVehiculo nuevaEntidad = new EntidadVehiculo();
-        nuevaEntidad.setId(id);
-        nuevaEntidad.setPlaca(entidad.stream().map(entidadVehiculo -> entidadVehiculo.getPlaca()));
+        for (int i=0; i<entidad.size();i++){
+            EntidadVehiculo nuevaEntidad = new EntidadVehiculo();
 
-        if(entidadVehiculo.isActivo()){
-            mensaje = "se ha inactivado";
-            nuevaEntidad.setActivo(false);
-        }else {
-            mensaje = "se ha activado";
-            nuevaEntidad.setActivo(true);
+            nuevaEntidad.setId(entidad.get(i).getId());
+
+            if(entidad.get(i).isActivo()){
+                mensaje = "se ha inactivado";
+                nuevaEntidad.setActivo(false);
+                this.repositorioVehiculoJpa.save(nuevaEntidad);
+            }else {
+                mensaje = "se ha activado";
+                nuevaEntidad.setActivo(true);
+                this.repositorioVehiculoJpa.save(nuevaEntidad);
+            }
         }
 
-        return new ResponseVehiculoCambiarEstado(mensaje,vehiculo.getPlaca());*/
-        return null;
+        return new ResponseVehiculoCambiarEstado(list);
     }
 
     @Override
     public boolean existe(String placa) {
         return this.repositorioVehiculoJpa.findByPlaca(placa) != null;
+    }
+
+    @Override
+    public boolean existe(Long id) {
+        return this.repositorioVehiculoJpa.findById(id) !=null;
+    }
+
+    @Override
+    public ResponseVehiculoConsultar consultarPorId(Long id) {
+        String placa = this.repositorioVehiculoJpa.findById(id).get().getPlaca();
+        boolean estado= this.repositorioVehiculoJpa.findById(id).get().isActivo();
+        Vehiculo vehiculo= new Vehiculo(placa,estado);
+        return new ResponseVehiculoConsultar(vehiculo);
     }
 
     @Override

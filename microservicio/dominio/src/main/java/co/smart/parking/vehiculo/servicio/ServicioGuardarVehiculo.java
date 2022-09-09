@@ -27,7 +27,7 @@ public class ServicioGuardarVehiculo {
 
     private void validarExistencia(Vehiculo vehiculo){
         if (this.repositorioVehiculo.existe(vehiculo.getPlaca())) {
-            throw new RuntimeException("ya existe");
+            throw new RuntimeException(mensajeGuardar);
         }
     }
 }
