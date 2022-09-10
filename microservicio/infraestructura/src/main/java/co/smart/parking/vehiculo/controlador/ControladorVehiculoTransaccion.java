@@ -1,7 +1,10 @@
 package co.smart.parking.vehiculo.controlador;
 
 import co.smart.parking.vehiculo.comando.RequestVehiculoTransaccion;
+import co.smart.parking.vehiculo.comando.manejador.ManejadorEliminarVehiculo;
+import co.smart.parking.vehiculo.comando.manejador.ManejadorEstadoVehiculo;
 import co.smart.parking.vehiculo.comando.manejador.ManejadorGuardarVehiculo;
+import co.smart.parking.vehiculo.modelo.dtoRespuesta.ResponseVehiculoCambiarEstado;
 import co.smart.parking.vehiculo.modelo.dtoRespuesta.ResponseVehiculoConsultarTodos;
 import co.smart.parking.vehiculo.modelo.dtoRespuesta.ResponseVehiculoGuardar;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +17,18 @@ import org.springframework.web.bind.annotation.*;
 public class ControladorVehiculoTransaccion {
 
    private final ManejadorGuardarVehiculo manejadorGuardarVehiculo;
+
+   private final ManejadorEstadoVehiculo manejadorEstadoVehiculo;
+
+   private final ManejadorEliminarVehiculo manejadorEliminarVehiculo;
+
+
+
     @Autowired
-    public ControladorVehiculoTransaccion(ManejadorGuardarVehiculo manejadorGuardarVehiculo) {
+    public ControladorVehiculoTransaccion(ManejadorGuardarVehiculo manejadorGuardarVehiculo, ManejadorEstadoVehiculo manejadorEstadoVehiculo, ManejadorEliminarVehiculo manejadorEliminarVehiculo) {
         this.manejadorGuardarVehiculo = manejadorGuardarVehiculo;
+        this.manejadorEstadoVehiculo = manejadorEstadoVehiculo;
+        this.manejadorEliminarVehiculo = manejadorEliminarVehiculo;
     }
 
     @GetMapping(value = "/vehiculo")
@@ -35,7 +47,7 @@ public class ControladorVehiculoTransaccion {
 
 
     @PostMapping
-    public ResponseEntity<ResponseVehiculoGuardar> guardarPrestamo(@RequestBody RequestVehiculoTransaccion requestVehiculoTransaccion){
+    public ResponseEntity<ResponseVehiculoGuardar> guardarVehiculo(@RequestBody RequestVehiculoTransaccion requestVehiculoTransaccion){
 
         try {
             ResponseVehiculoGuardar responseVehiculoGuardar= this.manejadorGuardarVehiculo.ejecutar(requestVehiculoTransaccion);
@@ -48,4 +60,24 @@ public class ControladorVehiculoTransaccion {
 
     }
 
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Boolean> eliminarVehiculo(@PathVariable Long id){
+        try {
+            this.manejadorEliminarVehiculo.ejecutar(id);
+            return new ResponseEntity<>(true, HttpStatus.OK);
+        }catch (Exception exception){
+            return null;
+        }
+    }
+
+
+    @PutMapping(value = "/{placa}")
+    public ResponseEntity<ResponseVehiculoCambiarEstado> cambiarEstado(@PathVariable String placa){
+        try {
+            ResponseVehiculoCambiarEstado responseVehiculoCambiarEstado = this.manejadorEstadoVehiculo.ejecutar(placa);
+            return new ResponseEntity<>(responseVehiculoCambiarEstado,HttpStatus.OK);
+        }catch (Exception exception){
+            return null;
+        }
+    }
 }

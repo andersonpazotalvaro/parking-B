@@ -2,7 +2,9 @@ package co.smart.parking.vehiculo.servicio;
 
 import co.smart.parking.vehiculo.modelo.dominio.Vehiculo;
 import co.smart.parking.vehiculo.puerto.RepositorioVehiculo;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ServicioActualizarVehiculo {
 
     private static final String mensajeActualizar="no se puede actualizar, no se encontro vehiculo";

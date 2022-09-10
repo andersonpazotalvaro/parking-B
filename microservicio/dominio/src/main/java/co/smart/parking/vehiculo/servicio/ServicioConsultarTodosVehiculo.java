@@ -2,7 +2,9 @@ package co.smart.parking.vehiculo.servicio;
 
 import co.smart.parking.vehiculo.modelo.dtoRespuesta.ResponseVehiculoConsultarTodos;
 import co.smart.parking.vehiculo.puerto.RepositorioVehiculo;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ServicioConsultarTodosVehiculo {
 
     private static final String mensajeConsultarTodos="no se encontraron vehiculos";

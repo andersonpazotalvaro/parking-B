@@ -2,7 +2,9 @@ package co.smart.parking.vehiculo.servicio;
 
 import co.smart.parking.vehiculo.modelo.dtoRespuesta.ResponseVehiculoCambiarEstado;
 import co.smart.parking.vehiculo.puerto.RepositorioVehiculo;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ServicioCambiarEstadoVehiculo {
 
     private static final String mensajeCambiarEstado="no se pudo cambiar estado";

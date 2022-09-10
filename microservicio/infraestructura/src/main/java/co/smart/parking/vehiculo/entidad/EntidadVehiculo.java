@@ -7,7 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-@NoArgsConstructor
+
 @Getter
 @Setter
 @Entity
@@ -38,7 +38,32 @@ public class EntidadVehiculo {
         this.placa = placa;
     }
 
+    public EntidadVehiculo() {
+    }
+
     public String getPlaca() {
         return placa;
     }
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setPlaca(String placa) {
+        this.placa = placa;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
+    }
+
+
 }

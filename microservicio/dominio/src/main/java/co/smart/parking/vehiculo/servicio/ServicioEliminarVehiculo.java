@@ -3,7 +3,9 @@ package co.smart.parking.vehiculo.servicio;
 import co.smart.parking.vehiculo.modelo.dominio.Vehiculo;
 import co.smart.parking.vehiculo.modelo.dtoRespuesta.ResponseVehiculoGuardar;
 import co.smart.parking.vehiculo.puerto.RepositorioVehiculo;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ServicioEliminarVehiculo {
     private static final String mensajeEliminar="No se pudo eliminar";
 
