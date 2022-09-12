@@ -17,7 +17,7 @@ public class ServicioConsultarVehiculo {
     }
 
     public ResponseVehiculoConsultar ejecutar(Long id){
-        validarExistencia(id);
+        //validarExistencia(id);
         return this.repositorioVehiculo.consultarPorId(id);
     }
 

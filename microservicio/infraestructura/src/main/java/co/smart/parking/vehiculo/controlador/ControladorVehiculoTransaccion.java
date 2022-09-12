@@ -5,6 +5,7 @@ import co.smart.parking.vehiculo.comando.manejador.ManejadorEliminarVehiculo;
 import co.smart.parking.vehiculo.comando.manejador.ManejadorEstadoVehiculo;
 import co.smart.parking.vehiculo.comando.manejador.ManejadorGuardarVehiculo;
 import co.smart.parking.vehiculo.modelo.dtoRespuesta.ResponseVehiculoCambiarEstado;
+import co.smart.parking.vehiculo.modelo.dtoRespuesta.ResponseVehiculoConsultar;
 import co.smart.parking.vehiculo.modelo.dtoRespuesta.ResponseVehiculoConsultarTodos;
 import co.smart.parking.vehiculo.modelo.dtoRespuesta.ResponseVehiculoGuardar;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,19 +32,7 @@ public class ControladorVehiculoTransaccion {
         this.manejadorEliminarVehiculo = manejadorEliminarVehiculo;
     }
 
-    @GetMapping(value = "/vehiculo")
-    public ResponseEntity<ResponseVehiculoConsultarTodos> consultar(){
 
-        /*try {
-            DtoPrestamoConsultarRespuesta dtoPrestamoConsultarRespuesta=  this.servicioPrestamoConsultar.consultar(id);
-            return new ResponseEntity<>(dtoPrestamoConsultarRespuesta, HttpStatus.OK);
-        } catch (Exception exception) {
-            DtoPrestamoConsultarRespuesta dtoPrestamoConsultarRespuesta = new DtoPrestamoConsultarRespuesta("la id: "+
-                    id+" no se encuentra");
-            return new ResponseEntity<>(dtoPrestamoConsultarRespuesta, HttpStatus.BAD_REQUEST);
-        }*/
-        return null;
-    }
 
 
     @PostMapping

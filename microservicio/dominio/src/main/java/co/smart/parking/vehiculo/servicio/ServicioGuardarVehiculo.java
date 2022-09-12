@@ -20,7 +20,7 @@ public class ServicioGuardarVehiculo {
 
     public ResponseVehiculoGuardar ejecutar(Vehiculo vehiculo){
 
-        validarExistencia(vehiculo);
+        //validarExistencia(vehiculo);
         return this.repositorioVehiculo.guardar(vehiculo);
     }
 

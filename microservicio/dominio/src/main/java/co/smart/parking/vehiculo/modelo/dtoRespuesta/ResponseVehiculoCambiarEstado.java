@@ -14,6 +14,10 @@ import java.util.List;
 @NoArgsConstructor
 public class ResponseVehiculoCambiarEstado {
 
-    List<Vehiculo> vehiculos;
+    //List<Vehiculo> vehiculos;
+
+   private String placa;
+
+   private boolean activo;
 
 }

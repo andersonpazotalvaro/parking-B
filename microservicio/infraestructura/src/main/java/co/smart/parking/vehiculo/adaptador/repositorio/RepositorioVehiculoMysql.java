@@ -38,26 +38,30 @@ public class RepositorioVehiculoMysql implements RepositorioVehiculo {
     @Override
     public ResponseVehiculoCambiarEstado cambiarEstado(String placa) {
         String mensaje="";
+        boolean estado=false;
         List<EntidadVehiculo> entidad = this.repositorioVehiculoJpa.findByPlaca(placa);
-        List<Vehiculo> list= entidad.stream().map(a -> new Vehiculo(a.getPlaca(),a.isActivo())).collect(Collectors.toList());
+        //List<Vehiculo> list= entidad.stream().map(a -> new Vehiculo(a.getPlaca(),a.isActivo())).collect(Collectors.toList());
 
         for (int i=0; i<entidad.size();i++){
             EntidadVehiculo nuevaEntidad = new EntidadVehiculo();
 
             nuevaEntidad.setId(entidad.get(i).getId());
+            nuevaEntidad.setPlaca(placa);
 
             if(entidad.get(i).isActivo()){
                 mensaje = "se ha inactivado";
                 nuevaEntidad.setActivo(false);
                 this.repositorioVehiculoJpa.save(nuevaEntidad);
+                estado=false;
             }else {
                 mensaje = "se ha activado";
                 nuevaEntidad.setActivo(true);
                 this.repositorioVehiculoJpa.save(nuevaEntidad);
+                estado=true;
             }
         }
 
-        return new ResponseVehiculoCambiarEstado(list);
+        return new ResponseVehiculoCambiarEstado(placa, estado);
     }
 
     @Override
