@@ -15,6 +15,7 @@ repositories {
 dependencies {
 
 	implementation project.ext.springbootjpa
+	implementation project.ext.springstarterweb
 
 }
 
