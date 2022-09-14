@@ -2,15 +2,10 @@ package co.smart.parking.vehiculo.controlador;
 
 import co.smart.parking.vehiculo.comando.RequestVehiculoTransaccion;
 import co.smart.parking.vehiculo.comando.manejador.ManejadorEliminarVehiculo;
-import co.smart.parking.vehiculo.comando.manejador.ManejadorEstadoVehiculo;
 import co.smart.parking.vehiculo.comando.manejador.ManejadorGuardarVehiculo;
-import co.smart.parking.vehiculo.modelo.dtoRespuesta.ResponseVehiculoCambiarEstado;
-import co.smart.parking.vehiculo.modelo.dtoRespuesta.ResponseVehiculoConsultar;
-import co.smart.parking.vehiculo.modelo.dtoRespuesta.ResponseVehiculoConsultarTodos;
-import co.smart.parking.vehiculo.modelo.dtoRespuesta.ResponseVehiculoGuardar;
+import co.smart.parking.vehiculo.comando.manejador.ManejadorCambiarEstadoVehiculo;
+import co.smart.parking.vehiculo.modelo.dtoRespuesta.RespuestaVehiculo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -19,54 +14,33 @@ public class ControladorVehiculoTransaccion {
 
    private final ManejadorGuardarVehiculo manejadorGuardarVehiculo;
 
-   private final ManejadorEstadoVehiculo manejadorEstadoVehiculo;
+   private final ManejadorCambiarEstadoVehiculo manejadorCambiarEstadoVehiculo;
 
    private final ManejadorEliminarVehiculo manejadorEliminarVehiculo;
 
 
 
     @Autowired
-    public ControladorVehiculoTransaccion(ManejadorGuardarVehiculo manejadorGuardarVehiculo, ManejadorEstadoVehiculo manejadorEstadoVehiculo, ManejadorEliminarVehiculo manejadorEliminarVehiculo) {
+    public ControladorVehiculoTransaccion(ManejadorGuardarVehiculo manejadorGuardarVehiculo, ManejadorCambiarEstadoVehiculo manejadorParquearVehiculo, ManejadorEliminarVehiculo manejadorEliminarVehiculo) {
         this.manejadorGuardarVehiculo = manejadorGuardarVehiculo;
-        this.manejadorEstadoVehiculo = manejadorEstadoVehiculo;
+        this.manejadorCambiarEstadoVehiculo = manejadorParquearVehiculo;
         this.manejadorEliminarVehiculo = manejadorEliminarVehiculo;
     }
 
 
-
+    @PutMapping(value = "/{nuevoEstado}")
+    public boolean cambiarEstadoVehiculo(@RequestBody RequestVehiculoTransaccion requestVehiculoTransaccion, @PathVariable boolean nuevoEstado){
+        return this.manejadorCambiarEstadoVehiculo.ejecutar(requestVehiculoTransaccion, nuevoEstado);
+    }
 
     @PostMapping
-    public ResponseEntity<ResponseVehiculoGuardar> guardarVehiculo(@RequestBody RequestVehiculoTransaccion requestVehiculoTransaccion){
-
-        try {
-            ResponseVehiculoGuardar responseVehiculoGuardar= this.manejadorGuardarVehiculo.ejecutar(requestVehiculoTransaccion);
-            return new ResponseEntity<>(responseVehiculoGuardar, HttpStatus.OK);
-        } catch (Exception exception) {
-           // ResponseVehiculoGuardar responseVehiculoGuardar = new ResponseVehiculoGuardar();
-            //return new ResponseEntity<>(ResponseVehiculoGuardar, HttpStatus.BAD_REQUEST);
-            return null;
-        }
-
+    public RespuestaVehiculo guardarVehiculo(@RequestBody RequestVehiculoTransaccion requestVehiculoTransaccion){
+        return this.manejadorGuardarVehiculo.ejecutar(requestVehiculoTransaccion);
     }
 
-    @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Boolean> eliminarVehiculo(@PathVariable Long id){
-        try {
-            this.manejadorEliminarVehiculo.ejecutar(id);
-            return new ResponseEntity<>(true, HttpStatus.OK);
-        }catch (Exception exception){
-            return null;
-        }
+    @DeleteMapping(value = "/{placa}")
+    public boolean eliminarVehiculo(@PathVariable String placa){
+        return this.manejadorEliminarVehiculo.ejecutar(placa);
     }
 
-
-    @PutMapping(value = "/{placa}")
-    public ResponseEntity<ResponseVehiculoCambiarEstado> cambiarEstado(@PathVariable String placa){
-        try {
-            ResponseVehiculoCambiarEstado responseVehiculoCambiarEstado = this.manejadorEstadoVehiculo.ejecutar(placa);
-            return new ResponseEntity<>(responseVehiculoCambiarEstado,HttpStatus.OK);
-        }catch (Exception exception){
-            return null;
-        }
-    }
 }

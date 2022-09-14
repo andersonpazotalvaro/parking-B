@@ -1,13 +1,13 @@
 package co.smart.parking.vehiculo.servicio;
 
-import co.smart.parking.vehiculo.modelo.dominio.Vehiculo;
-import co.smart.parking.vehiculo.modelo.dtoRespuesta.ResponseVehiculoGuardar;
-import co.smart.parking.vehiculo.puerto.RepositorioVehiculo;
+import co.smart.parking.excepcion.ExcepcionInexistente;
+import co.smart.parking.vehiculo.puerto.repositorio.RepositorioVehiculo;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ServicioEliminarVehiculo {
-    private static final String mensajeEliminar="No se pudo eliminar";
+
+    private static final String NO_SE_PUDO_ELIMINAR_EL_VEHICULO = "No se pudo eliminar";
 
     private final RepositorioVehiculo repositorioVehiculo;
 
@@ -17,17 +17,16 @@ public class ServicioEliminarVehiculo {
     }
 
 
-    public boolean ejecutar(Long id){
-        validarExistencia(id);
-        return this.repositorioVehiculo.eliminar(id);
+    public boolean ejecutar(String placa){
+        validarExistencia(placa);
+        return this.repositorioVehiculo.eliminarPorPlaca(placa);
     }
 
 
-    private void validarExistencia(Long id){
-        if (!this.repositorioVehiculo.existe(id)) {
-            throw new RuntimeException(mensajeEliminar);
+    private void validarExistencia(String placa){
+        if (!this.repositorioVehiculo.existePorPlaca(placa)) {
+            throw new ExcepcionInexistente(NO_SE_PUDO_ELIMINAR_EL_VEHICULO);
         }
     }
-
 
 }

@@ -1,19 +1,17 @@
 package co.smart.parking.vehiculo.modelo.dtoRespuesta;
 
-import co.smart.parking.vehiculo.modelo.dominio.Vehiculo;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ResponseVehiculoConsultarTodos {
+public class RespuestaVehiculo {
 
-    private List<Vehiculo> vehiculos;
-
+    private Long id;
+    private String placa;
+    private boolean activo;
 }

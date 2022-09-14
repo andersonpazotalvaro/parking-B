@@ -1,5 +1,7 @@
 package co.smart.parking.error;
 
+import co.smart.parking.excepcion.ExcepcionDuplicidad;
+import co.smart.parking.excepcion.ExcepcionInexistente;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -19,6 +21,9 @@ public class ManejadorError extends ResponseEntityExceptionHandler {
     public ManejadorError() {
 
         // Cargar los codigos de respuesta http de las excepciones manejadas en la api
+
+        CODIGOS_RESPUESTA.put(ExcepcionDuplicidad.class.getSimpleName(), HttpStatus.BAD_REQUEST.value());
+        CODIGOS_RESPUESTA.put(ExcepcionInexistente.class.getSimpleName(), HttpStatus.BAD_REQUEST.value());
 
     }
 

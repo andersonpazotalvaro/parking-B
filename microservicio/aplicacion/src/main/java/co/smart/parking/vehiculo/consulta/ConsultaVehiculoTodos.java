@@ -1,19 +1,21 @@
 package co.smart.parking.vehiculo.consulta;
 
-import co.smart.parking.vehiculo.modelo.dtoRespuesta.ResponseVehiculoConsultarTodos;
-import co.smart.parking.vehiculo.servicio.ServicioConsultarTodosVehiculo;
+import co.smart.parking.vehiculo.modelo.dtoRespuesta.RespuestaVehiculo;
+import co.smart.parking.vehiculo.puerto.dao.DaoVehiculo;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 public class ConsultaVehiculoTodos {
 
-    private final ServicioConsultarTodosVehiculo servicioConsultarTodosVehiculo;
+    private final DaoVehiculo daoVehiculo;
 
-    public ConsultaVehiculoTodos(ServicioConsultarTodosVehiculo servicioConsultarTodosVehiculo) {
-        this.servicioConsultarTodosVehiculo = servicioConsultarTodosVehiculo;
+    public ConsultaVehiculoTodos(DaoVehiculo daoVehiculo) {
+        this.daoVehiculo = daoVehiculo;
     }
 
-    public ResponseVehiculoConsultarTodos ejecutar(){
-       return this.servicioConsultarTodosVehiculo.ejecutar();
+    public List<RespuestaVehiculo> ejecutar(){
+       return this.daoVehiculo.obtenerVehiculos();
     }
 }

@@ -1,4 +1,4 @@
-package co.smart.parking.vehiculo.adaptador.repositorio;
+package co.smart.parking.vehiculo.adaptador;
 
 
 import co.smart.parking.vehiculo.entidad.EntidadVehiculo;
@@ -10,13 +10,8 @@ import java.util.List;
 @Repository
 public interface RepositorioVehiculoJpa extends JpaRepository<EntidadVehiculo, Long> {
 
-    List<EntidadVehiculo> findByPlaca(String placa);
-
-   // EntidadVehiculo findById(Long id);
-
+    void deleteByPlaca(String placa);
+    EntidadVehiculo findByPlaca(String placa);
     List<EntidadVehiculo> findByActivoTrue();
-
-    //Optional<List<EntidadVehiculo>> findById(Long id);
-
     List<EntidadVehiculo> findAllById(Long id);
 }

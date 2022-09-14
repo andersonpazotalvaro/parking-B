@@ -10,11 +10,11 @@ import org.springframework.stereotype.Component;
 public class FabricaVehiculo {
 
 
-    public Vehiculo crear(RequestVehiculoTransaccion requestVehiculoTransaccion){
+    public Vehiculo crear(RequestVehiculoTransaccion requestVehiculoTransaccion, boolean isActive){
 
         return new Vehiculo(
                 requestVehiculoTransaccion.getPlaca(),
-                true
+                isActive
         );
 
     }

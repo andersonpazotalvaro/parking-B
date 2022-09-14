@@ -17,6 +17,8 @@ dependencies {
 	implementation project.ext.springbootjpa
 	implementation project.ext.springstarterweb
 
+	implementation project(':comun:comun-dominio')
+
 }
 
 tasks.named('test') {

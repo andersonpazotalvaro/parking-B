@@ -18,20 +18,22 @@ public class EntidadVehiculo {
     @GeneratedValue(strategy= GenerationType.SEQUENCE )
     private Long id;
 
-@Column
+    @Column
     private  String placa;
 
-@Column
+    @Column
     private boolean activo;
 
 
-
-
+    public EntidadVehiculo(Long id, String placa, boolean activo) {
+        this.id = id;
+        this.placa = placa;
+        this.activo = activo;
+    }
 
     public EntidadVehiculo(String placa, boolean activo) {
         this.placa = placa;
         this.activo = activo;
-
     }
 
     public EntidadVehiculo(String placa) {
