@@ -27,6 +27,16 @@ allprojects {
 	//Lombok
 	project.ext.lombok = [ 'org.projectlombok:lombok:1.18.20' ]
 
+	// Mockito
+	project.ext.mockitocore = ['org.mockito:mockito-core:3.11.2']
+	project.ext.mockitoinline = ['org.mockito:mockito-inline:3.11.2']
+	project.ext.mockitojupiter = ['org.mockito:mockito-junit-jupiter:3.11.2']
+
+	// Se excluye JUnit 4
+	configurations {
+		runtime.exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+
 }
 
 group = 'co.smart.parking'

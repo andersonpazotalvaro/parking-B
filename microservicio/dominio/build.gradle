@@ -20,6 +20,11 @@ dependencies {
 	implementation "org.springframework.boot:spring-boot-devtools"
 	compileOnly project.ext.lombok
 	annotationProcessor project.ext.lombok
+
+
+	implementation project.ext.mockitocore
+	implementation project.ext.mockitoinline
+	implementation project.ext.mockitojupiter
 }
 
 tasks.named('test') {
