@@ -40,8 +40,8 @@ public class RepositorioVehiculoSql implements RepositorioVehiculo {
     }
 
     @Override
-    public boolean eliminarPorPlaca(String placa) {
-        this.repositorioVehiculoJpa.deleteByPlaca(placa);
+    public boolean eliminarPorId(Long id) {
+        this.repositorioVehiculoJpa.deleteById(id);
         return true;
     }
 

@@ -9,5 +9,5 @@ public interface RepositorioVehiculo {
     Long guardar(Vehiculo vehiculo);
     boolean actualizar(Vehiculo vehiculo);
     boolean existePorPlaca(String placa);
-    boolean eliminarPorPlaca(String placa);
+    boolean eliminarPorId(Long id);
 }
