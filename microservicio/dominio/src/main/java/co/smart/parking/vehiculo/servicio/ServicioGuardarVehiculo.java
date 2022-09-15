@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ServicioGuardarVehiculo {
 
-    private static final String NO_SE_PUDO_GUARDAR = "No se pudo Guardar";
+    private static final String NO_SE_PUDO_GUARDAR = "No se pudo guardar";
 
     private final RepositorioVehiculo repositorioVehiculo;
     private final DaoVehiculo daoVehiculo;
@@ -22,7 +22,7 @@ public class ServicioGuardarVehiculo {
     }
 
 
-    public RespuestaVehiculo ejecutar(Vehiculo vehiculo){
+    public RespuestaVehiculo ejecutar(Vehiculo vehiculo) {
 
         validarExistencia(vehiculo);
         this.repositorioVehiculo.guardar(vehiculo);

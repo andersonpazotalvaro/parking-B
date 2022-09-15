@@ -14,19 +14,20 @@ repositories {
 
 dependencies {
 	implementation project(':comun:comun-dominio')
-	//implementation project.ext.springstarterweb
-	 implementation "org.springframework.boot:spring-boot-starter-web"
-	//implementation project.ext.springdevtools
-	implementation "org.springframework.boot:spring-boot-devtools"
+	implementation project.ext.springstarterweb
+	 //implementation "org.springframework.boot:spring-boot-starter-web"
+	implementation project.ext.springdevtools
+	//implementation "org.springframework.boot:spring-boot-devtools"
 	compileOnly project.ext.lombok
 	annotationProcessor project.ext.lombok
 
-
-	implementation project.ext.mockitocore
-	implementation project.ext.mockitoinline
-	implementation project.ext.mockitojupiter
+	testImplementation project.ext.springstarterweb
+	testImplementation project.ext.mockitocore
+	//testImplementation project.ext.mockitoinline
+	testImplementation project.ext.junitjupiterapi
+	testRuntimeOnly project.ext.junitjupiterengine
 }
 
-tasks.named('test') {
+test {
 	useJUnitPlatform()
 }
