@@ -1,12 +1,12 @@
 package co.smart.parking.usuario.adaptador.entidad;
 
-import co.smart.parking.parqueadero.adaptador.entidad.EntidadParqueadero;
-import co.smart.parking.vehiculo.entidad.EntidadVehiculo;
+import co.smart.parking.rol.adaptador.entidad.EntidadRol;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @NoArgsConstructor
 @Getter
@@ -19,31 +19,22 @@ public class EntidadUsuario {
     @GeneratedValue(strategy= GenerationType.SEQUENCE )
     private Long id;
 
-    @Column(length = 15, nullable = false)
-    private String identificacion;
-
-    @Column(length = 50, nullable = false)
-    private String correo;
-
-    @Column(length = 50, nullable = false)
-    private String nombre;
+    @Column(length = 50, nullable = false, unique = true)
+    private String nombreUsuario;
 
     @Column(length = 10, nullable = false)
     private String contrasena;
 
-    @OneToOne
-    @JoinColumn(name = "vehiculo_id")
-    private EntidadVehiculo entidadVehiculo;
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    @JoinTable(name = "usuario_rol",
+            joinColumns = @JoinColumn(name = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "rol_id"))
+    private Set<EntidadRol> roles;
 
-    @ManyToOne
-    @JoinColumn(name = "parqueadero_id")
-    private EntidadParqueadero entidadParqueadero;
 
-    public EntidadUsuario(String identificacion, String correo, String nombre, String contrasena, EntidadVehiculo entidadVehiculo) {
-        this.identificacion = identificacion;
-        this.correo = correo;
-        this.nombre = nombre;
+
+    public EntidadUsuario(String nombreUsuario, String contrasena, Set<EntidadRol> roles) {
+        this.nombreUsuario = nombreUsuario;
         this.contrasena = contrasena;
-        this.entidadVehiculo= entidadVehiculo;
+        this.roles = roles;
     }
 }

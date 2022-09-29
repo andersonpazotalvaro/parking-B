@@ -1,22 +1,19 @@
-package co.smart.parking.usuario.comando;
+package co.smart.parking.usuario.modelo.dtoRespuesta;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-public class RequestUsuarioTransaccion {
+@AllArgsConstructor
+public class RespuestaUsuario {
 
     private String nombreUsuario;
     private String contrasena;
-    private List<String> roles;
+    private Set<String> roles;
 }
-
-
-

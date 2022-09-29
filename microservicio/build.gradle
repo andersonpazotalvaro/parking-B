@@ -36,6 +36,11 @@ allprojects {
 	project.ext.junitjupiterapi = ['org.junit.jupiter:junit-jupiter-api:5.8.1']
 	project.ext.junitjupiterengine = ['org.junit.jupiter:junit-jupiter-engine:5.8.1']
 
+	// Security
+	project.ext.springsecurity = [ 'org.springframework.boot:spring-boot-starter-security']
+		// JWT
+	project.ext.jwt = [  'io.jsonwebtoken:jjwt:0.9.1' ]
+
 
 	// Se excluye JUnit 4
 	configurations {

@@ -21,6 +21,8 @@ dependencies {
 	implementation project(':aplicacion')
 	implementation project(':comun:comun-infraestructura')
 
+	implementation project.ext.springsecurity
+	implementation project.ext.jwt
 
 }
 

@@ -1,37 +1,31 @@
 package co.smart.parking.usuario.modelo.dominio;
 
-import co.smart.parking.parqueadero.modelo.dominio.Parqueadero;
-import co.smart.parking.vehiculo.modelo.dominio.Vehiculo;
+import co.smart.parking.ValidadorParametro;
 import lombok.Getter;
+
+import java.util.List;
 
 @Getter
 public class Usuario {
 
-    private final String identificacion;
+    public static final String SE_DEBE_INGRESAR_UN_NOMBRE_DE_USUARIO = "Se debe ingresar un nombre de usuario";
+    public static final String SE_DEBE_INGRESAR_LA_CONTRASEÑA_PARA_EL_USUARIO_S = "Se debe ingresar la contraseña para el usuario %s";
+    public static final String EL_CAMPO_ROLES_NO_DEBE_SER_NULO = "El campo roles no debe ser nulo";
 
-    private final String contrasena;
+    private String nombreUsuario;
+    private String contrasena;
+    private List<String> roles;
 
-    private final String correo;
+    public Usuario(String nombreUsuario, String contrasena, List<String> roles) {
 
-    private final String nombre;
+        ValidadorParametro.validarValorVacio(nombreUsuario, SE_DEBE_INGRESAR_UN_NOMBRE_DE_USUARIO);
+        ValidadorParametro.validarValorVacio(contrasena, String.format(SE_DEBE_INGRESAR_LA_CONTRASEÑA_PARA_EL_USUARIO_S, nombreUsuario));
+        ValidadorParametro.validarValorNulo(roles, EL_CAMPO_ROLES_NO_DEBE_SER_NULO);
 
-    private final Vehiculo vehiculo;
-
-    private final Parqueadero parqueadero;
-
-    public Usuario(String identificacion, String contrasena, String correo, String nombre, Vehiculo vehiculo, Parqueadero parqueadero) {
-        this.identificacion = identificacion;
+        this.nombreUsuario = nombreUsuario;
         this.contrasena = contrasena;
-        this.correo = correo;
-        this.nombre = nombre;
-        this.vehiculo = vehiculo;
-        this.parqueadero = parqueadero;
+        this.roles = roles;
     }
-
-
-
-
-
 }
 
 

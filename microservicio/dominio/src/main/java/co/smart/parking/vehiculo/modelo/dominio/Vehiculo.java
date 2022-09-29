@@ -17,7 +17,7 @@ public class Vehiculo {
         this.placa = placa;
         this.activo= activo;
 
-        ValidadorParametro.validarValorNoVacio(placa, LA_PLACA_NO_PUEDE_SER_VACIA);
+        ValidadorParametro.validarValorVacio(placa, LA_PLACA_NO_PUEDE_SER_VACIA);
     }
 
     public static Vehiculo of(String placa,boolean activo){
