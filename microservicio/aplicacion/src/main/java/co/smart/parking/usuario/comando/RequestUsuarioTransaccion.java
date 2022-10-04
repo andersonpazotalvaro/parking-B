@@ -4,8 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -15,7 +14,7 @@ public class RequestUsuarioTransaccion {
 
     private String nombreUsuario;
     private String contrasena;
-    private List<String> roles;
+    private Set<String> roles;
 }
 
 

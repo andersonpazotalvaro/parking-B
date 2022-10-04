@@ -7,13 +7,17 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.Set;
 
-@AllArgsConstructor
 public class UsuarioDetalle implements UserDetails {
 
     private String nombreUsuario;
     private String contrasena;
     private Set<? extends GrantedAuthority> autoridades;
 
+    public UsuarioDetalle(String nombreUsuario, String contrasena, Set<GrantedAuthority> autoridades) {
+        this.nombreUsuario = nombreUsuario;
+        this.contrasena = contrasena;
+        this.autoridades = autoridades;
+    }
 
     @Override
     public String getUsername() {

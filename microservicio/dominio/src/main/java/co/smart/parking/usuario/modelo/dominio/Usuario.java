@@ -3,7 +3,7 @@ package co.smart.parking.usuario.modelo.dominio;
 import co.smart.parking.ValidadorParametro;
 import lombok.Getter;
 
-import java.util.List;
+import java.util.Set;
 
 @Getter
 public class Usuario {
@@ -14,9 +14,9 @@ public class Usuario {
 
     private String nombreUsuario;
     private String contrasena;
-    private List<String> roles;
+    private Set<String> roles;
 
-    public Usuario(String nombreUsuario, String contrasena, List<String> roles) {
+    public Usuario(String nombreUsuario, String contrasena, Set<String> roles) {
 
         ValidadorParametro.validarValorVacio(nombreUsuario, SE_DEBE_INGRESAR_UN_NOMBRE_DE_USUARIO);
         ValidadorParametro.validarValorVacio(contrasena, String.format(SE_DEBE_INGRESAR_LA_CONTRASEÑA_PARA_EL_USUARIO_S, nombreUsuario));

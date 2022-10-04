@@ -1,12 +1,14 @@
 package co.smart.parking.vehiculo.adaptador.dao;
 
 import co.smart.parking.vehiculo.adaptador.RepositorioVehiculoJpa;
-import co.smart.parking.vehiculo.adaptador.mapper.MapperVehiculo;
+import co.smart.parking.vehiculo.adaptador.MapperVehiculo;
 import co.smart.parking.vehiculo.modelo.dtoRespuesta.RespuestaVehiculo;
 import co.smart.parking.vehiculo.puerto.dao.DaoVehiculo;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class DaoVehiculoSql implements DaoVehiculo {
 
     private final RepositorioVehiculoJpa repositorioVehiculoJpa;

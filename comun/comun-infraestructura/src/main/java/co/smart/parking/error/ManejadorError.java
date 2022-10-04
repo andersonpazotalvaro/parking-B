@@ -14,7 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class ManejadorError extends ResponseEntityExceptionHandler {
 
 
-    private final static String OCURRIO_UN_ERROR_INESPERADO = "Ocurrio un error ineperado";
+    private final static String OCURRIO_UN_ERROR_INESPERADO = "Ocurrio un error inesperado";
     private final static ConcurrentHashMap<String, Integer> CODIGOS_RESPUESTA = new ConcurrentHashMap<>();
 
 

@@ -9,8 +9,6 @@ import javax.persistence.*;
 import java.util.Set;
 
 @NoArgsConstructor
-@Getter
-@Setter
 @Entity
 @Table(name="usuario")
 public class EntidadUsuario {
@@ -35,6 +33,34 @@ public class EntidadUsuario {
     public EntidadUsuario(String nombreUsuario, String contrasena, Set<EntidadRol> roles) {
         this.nombreUsuario = nombreUsuario;
         this.contrasena = contrasena;
+        this.roles = roles;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
+    }
+
+    public String getContrasena() {
+        return contrasena;
+    }
+
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
+
+    public Set<EntidadRol> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<EntidadRol> roles) {
         this.roles = roles;
     }
 }

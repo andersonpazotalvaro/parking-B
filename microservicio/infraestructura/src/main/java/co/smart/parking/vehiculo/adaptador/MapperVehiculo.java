@@ -1,4 +1,4 @@
-package co.smart.parking.vehiculo.adaptador.mapper;
+package co.smart.parking.vehiculo.adaptador;
 
 import co.smart.parking.vehiculo.entidad.EntidadVehiculo;
 import co.smart.parking.vehiculo.modelo.dominio.Vehiculo;

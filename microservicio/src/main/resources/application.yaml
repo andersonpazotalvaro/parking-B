@@ -1,0 +1,17 @@
+server:
+  port: 8001
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/parking
+    username: postgres
+    password: fanti
+  
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+
+jwt:
+  secret: fanti

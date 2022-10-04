@@ -1,6 +1,7 @@
 package co.smart.parking;
 
 import co.smart.parking.excepcion.ExcepcionArgumentoInvalido;
+import org.springframework.util.StringUtils;
 
 public class ValidadorParametro {
 
@@ -12,7 +13,7 @@ public class ValidadorParametro {
 
 
     public static void validarValorVacio(String valor, String mensaje) {
-        if(valor.isEmpty()) {
+        if(!StringUtils.hasText(valor)) {
             throw new ExcepcionArgumentoInvalido(mensaje);
         }
     }

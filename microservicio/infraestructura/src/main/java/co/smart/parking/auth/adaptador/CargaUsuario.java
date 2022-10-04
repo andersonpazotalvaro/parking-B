@@ -7,12 +7,12 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CargarUsuario implements UserDetailsService {
+public class CargaUsuario implements UserDetailsService {
 
     private final ConsultarUsuario consultarUsuario;
     private final MapperUsuarioDetalles mapperUsuarioDetalles;
 
-    public CargarUsuario(ConsultarUsuario consultarUsuario, MapperUsuarioDetalles mapperUsuarioDetalles) {
+    public CargaUsuario(ConsultarUsuario consultarUsuario, MapperUsuarioDetalles mapperUsuarioDetalles) {
         this.consultarUsuario = consultarUsuario;
         this.mapperUsuarioDetalles = mapperUsuarioDetalles;
     }

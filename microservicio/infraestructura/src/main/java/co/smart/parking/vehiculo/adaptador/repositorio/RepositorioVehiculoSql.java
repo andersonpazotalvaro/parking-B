@@ -1,7 +1,7 @@
 package co.smart.parking.vehiculo.adaptador.repositorio;
 
 import co.smart.parking.vehiculo.adaptador.RepositorioVehiculoJpa;
-import co.smart.parking.vehiculo.adaptador.mapper.MapperVehiculo;
+import co.smart.parking.vehiculo.adaptador.MapperVehiculo;
 import co.smart.parking.vehiculo.puerto.dao.DaoVehiculo;
 import co.smart.parking.vehiculo.puerto.repositorio.RepositorioVehiculo;
 import co.smart.parking.vehiculo.modelo.dominio.Vehiculo;

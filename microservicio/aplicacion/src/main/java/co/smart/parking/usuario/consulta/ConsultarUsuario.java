@@ -1,7 +1,7 @@
 package co.smart.parking.usuario.consulta;
 
 import co.smart.parking.usuario.modelo.dtoRespuesta.RespuestaUsuario;
-import co.smart.parking.usuario.puerto.DaoUsuario;
+import co.smart.parking.usuario.puerto.dao.DaoUsuario;
 import org.springframework.stereotype.Component;
 
 @Component

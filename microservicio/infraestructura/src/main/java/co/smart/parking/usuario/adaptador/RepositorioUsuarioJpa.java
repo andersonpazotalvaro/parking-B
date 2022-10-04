@@ -1,4 +1,4 @@
-package co.smart.parking.usuario.adaptador.repositorio;
+package co.smart.parking.usuario.adaptador;
 
 import co.smart.parking.usuario.adaptador.entidad.EntidadUsuario;
 import org.springframework.data.jpa.repository.JpaRepository;
