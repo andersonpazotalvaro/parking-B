@@ -1,14 +1,10 @@
 package co.smart.parking.usuario.adaptador.entidad;
 
 import co.smart.parking.rol.adaptador.entidad.EntidadRol;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Set;
 
-@NoArgsConstructor
 @Entity
 @Table(name="usuario")
 public class EntidadUsuario {
@@ -20,7 +16,7 @@ public class EntidadUsuario {
     @Column(length = 50, nullable = false, unique = true)
     private String nombreUsuario;
 
-    @Column(length = 10, nullable = false)
+    @Column(nullable = false)
     private String contrasena;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
@@ -29,6 +25,7 @@ public class EntidadUsuario {
     private Set<EntidadRol> roles;
 
 
+    public EntidadUsuario() { }
 
     public EntidadUsuario(String nombreUsuario, String contrasena, Set<EntidadRol> roles) {
         this.nombreUsuario = nombreUsuario;

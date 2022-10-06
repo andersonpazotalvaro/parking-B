@@ -1,6 +1,5 @@
 plugins {
 	id 'org.springframework.boot' version '2.7.2'
-	id 'io.spring.dependency-management' version '1.0.12.RELEASE'
 	id 'java'
 }
 
@@ -15,11 +14,11 @@ repositories {
 dependencies {
 	implementation project(':dominio')
 	implementation project(':comun:comun-aplicacion')
-	//implementation project.ext.springstarterweb
-	//implementation project.ext.springdevtools
-	implementation "org.springframework.boot:spring-boot-starter-web"
-	implementation "org.springframework.boot:spring-boot-devtools"
-	runtimeOnly 'mysql:mysql-connector-java'
+	implementation project.ext.springstarterweb
+	implementation project.ext.springdevtools
+	//implementation "org.springframework.boot:spring-boot-starter-web"
+	//implementation "org.springframework.boot:spring-boot-devtools"
+	//runtimeOnly  'mysql:mysql-connector-java'
 	compileOnly project.ext.lombok
 	annotationProcessor project.ext.lombok
 }

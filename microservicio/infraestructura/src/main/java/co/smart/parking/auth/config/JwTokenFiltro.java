@@ -1,6 +1,7 @@
 package co.smart.parking.auth.config;
 
 import co.smart.parking.auth.adaptador.CargaUsuario;
+import co.smart.parking.auth.adaptador.model.UsuarioDetalle;
 import co.smart.parking.jwToken.modelo.dto.RespuestaJwToken;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -31,7 +32,7 @@ public class JwTokenFiltro extends OncePerRequestFilter {
         if(jwToken != null) {
             this.jwTokenProveedor.validateToken(jwToken.getToken());
             var userName = this.jwTokenProveedor.obtenerNombreUsuarioDeToken(jwToken.getToken());
-            var user = this.cargaUsuario.loadUserByUsername(userName);
+            var user = (UsuarioDetalle) this.cargaUsuario.loadUserByUsername(userName);
             var userAuth = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
             SecurityContextHolder.getContext().setAuthentication(userAuth);
         }

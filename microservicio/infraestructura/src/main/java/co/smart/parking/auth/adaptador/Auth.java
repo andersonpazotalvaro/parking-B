@@ -23,7 +23,6 @@ public class Auth {
 
     public RespuestaJwToken login(Usuario usuario) {
         try {
-
             var usuarioAuth = new UsernamePasswordAuthenticationToken(usuario.getNombreUsuario(), usuario.getContrasena());
             var auth = this.authenticationManager.authenticate(usuarioAuth);
             var token = this.jwTokenProvider.generarToken(usuario);
