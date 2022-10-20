@@ -16,13 +16,29 @@ dependencies {
 	implementation project.ext.springstarterweb
     implementation 'org.projectlombok:lombok:1.18.24'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	runtimeOnly 'mysql:mysql-connector-java'
+	//runtimeOnly 'mysql:mysql-connector-java'
 	implementation project(':dominio')
 	implementation project(':aplicacion')
 	implementation project(':comun:comun-infraestructura')
 
 	implementation project.ext.springsecurity
 	implementation project.ext.jwt
+
+
+	implementation project(':dominio')
+	implementation project(':aplicacion')
+	implementation project(':comun:comun-infraestructura')
+
+	runtimeOnly project.ext.db
+
+	implementation project.ext.springamqp
+
+	/*implementation project.ext.springstarterweb
+	implementation project.ext.lombok
+	implementation project.ext.springbootjpa
+	implementation project.ext.springsecurity
+	implementation project.ext.jwt
+	implementation project.ext.springamqp*/
 
 }
 

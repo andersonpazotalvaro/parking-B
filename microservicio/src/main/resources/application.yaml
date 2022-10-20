@@ -2,6 +2,7 @@ server:
   port: 8001
 
 spring:
+
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/parking
@@ -12,6 +13,19 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: create
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
+
+rabbitmq:
+  dynamic: false
+
+parking:
+  queue: parking
 
 jwt:
   secret: fanti
