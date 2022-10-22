@@ -32,6 +32,7 @@ dependencies {
 	runtimeOnly project.ext.db
 
 	implementation project.ext.springamqp
+	implementation project.ext.gson
 
 	/*implementation project.ext.springstarterweb
 	implementation project.ext.lombok

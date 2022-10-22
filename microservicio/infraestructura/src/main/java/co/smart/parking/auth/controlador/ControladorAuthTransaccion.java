@@ -2,6 +2,7 @@ package co.smart.parking.auth.controlador;
 
 import co.smart.parking.auth.adaptador.Auth;
 import co.smart.parking.jwToken.modelo.dto.RespuestaJwToken;
+import co.smart.parking.rabbitmq.adaptador.EscritorMensaje;
 import co.smart.parking.usuario.comando.RequestUsuarioTransaccion;
 import co.smart.parking.usuario.comando.fabrica.FabricaUsuario;
 import co.smart.parking.usuario.comando.manejador.ManejadorGuardarUsuario;
@@ -16,12 +17,14 @@ public class ControladorAuthTransaccion {
     private final FabricaUsuario fabricaUsuario;
     private final ManejadorGuardarUsuario manejadorGuardarUsuario;
 
+    private final EscritorMensaje escritorMensaje;
 
     @Autowired
-    public ControladorAuthTransaccion(Auth auth, FabricaUsuario fabricaUsuario, ManejadorGuardarUsuario manejadorGuardarUsuario) {
+    public ControladorAuthTransaccion(Auth auth, FabricaUsuario fabricaUsuario, ManejadorGuardarUsuario manejadorGuardarUsuario, EscritorMensaje escritorMensaje) {
         this.auth = auth;
         this.fabricaUsuario = fabricaUsuario;
         this.manejadorGuardarUsuario = manejadorGuardarUsuario;
+        this.escritorMensaje = escritorMensaje;
     }
 
     @PostMapping
@@ -33,6 +36,12 @@ public class ControladorAuthTransaccion {
     @PutMapping
     public boolean registrarUsuario(@RequestBody RequestUsuarioTransaccion requestUsuarioTransaccion) {
         return this.manejadorGuardarUsuario.ejecutar(requestUsuarioTransaccion);
+    }
+
+    @GetMapping
+    public void testEscritor(){
+        String mensaje= "test escritor";
+        this.escritorMensaje.escribirMensaje(mensaje);
     }
 
 }

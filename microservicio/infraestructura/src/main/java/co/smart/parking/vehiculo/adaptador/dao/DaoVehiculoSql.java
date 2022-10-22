@@ -19,6 +19,7 @@ public class DaoVehiculoSql implements DaoVehiculo {
         this.mapperVehiculo = mapperVehiculo;
     }
 
+
     @Override
     public RespuestaVehiculo obtenerVehiculoPorPlaca(String placa) {
         var entidadVehiculo = this.repositorioVehiculoJpa.findByPlaca(placa);
@@ -28,6 +29,7 @@ public class DaoVehiculoSql implements DaoVehiculo {
     @Override
     public List<RespuestaVehiculo> obtenerVehiculos() {
         var entidadVehiculos = this.repositorioVehiculoJpa.findAll();
+
         return this.mapperVehiculo.crearResponses(entidadVehiculos);
     }
 

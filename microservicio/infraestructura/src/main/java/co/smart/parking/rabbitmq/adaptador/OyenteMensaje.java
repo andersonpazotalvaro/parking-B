@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class OyenteMensaje {
 
-    @RabbitListener(queues = "${parking.queue}")
+    /*@RabbitListener(queues = "${parking.queue}")
     public void recibirMensaje(String mensaje) {
 
         try {
@@ -15,5 +15,5 @@ public class OyenteMensaje {
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
-    }
+    }*/
 }

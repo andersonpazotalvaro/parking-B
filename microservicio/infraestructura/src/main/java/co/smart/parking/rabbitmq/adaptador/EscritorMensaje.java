@@ -8,12 +8,15 @@ public class EscritorMensaje {
 
     private final RabbitTemplate rabbitPlantilla;
 
-    public EscritorMensaje(RabbitTemplate rabbitPlantilla) {
+    private final EscritorConfig escritorConfig;
+
+    public EscritorMensaje(RabbitTemplate rabbitPlantilla, EscritorConfig escritorConfig) {
         this.rabbitPlantilla = rabbitPlantilla;
+        this.escritorConfig = escritorConfig;
     }
 
-    public void escribirMensaje() {
-        
+    public void escribirMensaje(Object mensaje) {
+        rabbitPlantilla.convertAndSend(escritorConfig.queue().getName(),mensaje);
     }
 }
 

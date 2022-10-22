@@ -1,13 +1,13 @@
 server:
-  port: 8001
+  port: 8080
 
 spring:
 
   datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/parking
-    username: postgres
-    password: fanti
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/parking?useSSL=false
+    username: root
+    password: 12345678
   
   jpa:
     show-sql: true
