@@ -16,9 +16,9 @@ dependencies {
 
 	implementation project.ext.springbootjpa
 	implementation project.ext.springstarterweb
+	implementation project.ext.gson
 
 	implementation project(':comun:comun-dominio')
-
 }
 
 tasks.named('test') {

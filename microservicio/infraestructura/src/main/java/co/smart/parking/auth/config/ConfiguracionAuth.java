@@ -1,7 +1,7 @@
 package co.smart.parking.auth.config;
 
 
-import co.smart.parking.auth.adaptador.CargaUsuario;
+import co.smart.parking.usuario.adaptador.CargaUsuario;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;

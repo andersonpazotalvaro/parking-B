@@ -16,12 +16,12 @@ public class ServicioActualizarVehiculo {
     }
 
     public boolean ejecutar(Vehiculo vehiculo){
-        validarExistencia(vehiculo.getPlaca());
+        validarExistencia(vehiculo);
         return this.repositorioVehiculo.actualizar(vehiculo);
     }
 
-    private void validarExistencia(String placa){
-        if (!this.repositorioVehiculo.existePorPlaca(placa)) {
+    private void validarExistencia(Vehiculo vehiculo){
+        if (!this.repositorioVehiculo.existePorPlaca(vehiculo.getPlaca())) {
             throw new ExcepcionInexistente(NO_SE_PUEDE_ACTUALIZAR);
         }
     }

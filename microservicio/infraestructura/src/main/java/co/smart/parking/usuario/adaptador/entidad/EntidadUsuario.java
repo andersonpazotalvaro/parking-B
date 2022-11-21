@@ -10,16 +10,13 @@ import java.util.Set;
 public class EntidadUsuario {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.SEQUENCE )
-    private Long id;
-
-    @Column(length = 50, nullable = false, unique = true)
+    @Column//(length = 50, nullable = false, unique = true)
     private String nombreUsuario;
 
     @Column(nullable = false)
     private String contrasena;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     @JoinTable(name = "usuario_rol",
             joinColumns = @JoinColumn(name = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "rol_id"))
     private Set<EntidadRol> roles;
@@ -33,9 +30,6 @@ public class EntidadUsuario {
         this.roles = roles;
     }
 
-    public Long getId() {
-        return id;
-    }
 
     public String getNombreUsuario() {
         return nombreUsuario;

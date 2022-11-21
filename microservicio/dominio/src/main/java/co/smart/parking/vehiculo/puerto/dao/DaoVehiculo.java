@@ -8,5 +8,5 @@ public interface DaoVehiculo {
 
     RespuestaVehiculo obtenerVehiculoPorPlaca(String placa);
     List<RespuestaVehiculo> obtenerVehiculos();
-    List<RespuestaVehiculo> obtenerVehiculosActivos();
+    List<RespuestaVehiculo> obtenerPorUsuario(String nombreUsuario);
 }

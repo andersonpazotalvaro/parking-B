@@ -13,7 +13,6 @@ public class Error {
     public String getExcepcionNombre() {
         return this.excepcionNombre;
     }
-
     public String getExcepcionMensaje() {
         return this.excepcionMensaje;
     }

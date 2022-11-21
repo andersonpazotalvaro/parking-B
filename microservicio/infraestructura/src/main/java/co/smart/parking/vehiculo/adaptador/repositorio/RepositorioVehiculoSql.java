@@ -7,6 +7,7 @@ import co.smart.parking.vehiculo.puerto.repositorio.RepositorioVehiculo;
 import co.smart.parking.vehiculo.modelo.dominio.Vehiculo;
 import org.springframework.stereotype.Repository;
 
+
 @Repository
 public class RepositorioVehiculoSql implements RepositorioVehiculo {
 
@@ -21,15 +22,14 @@ public class RepositorioVehiculoSql implements RepositorioVehiculo {
     }
 
     @Override
-    public Long guardar(Vehiculo vehiculo) {
-        var entidadVehiculo = this.mapperVehiculo.crearEntity(vehiculo);
-        return this.repositorioVehiculoJpa.save(entidadVehiculo).getId();
+    public String guardar(Vehiculo vehiculo) {
+        var entidadVehiculo = this.mapperVehiculo.crearEntidad(vehiculo);
+        return this.repositorioVehiculoJpa.save(entidadVehiculo).getPlaca();
     }
 
     @Override
     public boolean actualizar(Vehiculo vehiculo) {
-        var respuestaVehiculo = this.daoVehiculo.obtenerVehiculoPorPlaca(vehiculo.getPlaca());
-        var entidadVehiculo = this.mapperVehiculo.crearEntity(respuestaVehiculo.getId(), vehiculo);
+        var entidadVehiculo = this.mapperVehiculo.crearEntidad(vehiculo);
         this.repositorioVehiculoJpa.save(entidadVehiculo);
         return true;
     }
@@ -40,7 +40,7 @@ public class RepositorioVehiculoSql implements RepositorioVehiculo {
     }
 
     @Override
-    public boolean eliminarPorId(Long id) {
+    public boolean eliminarPorPlaca(String id) {
         this.repositorioVehiculoJpa.deleteById(id);
         return true;
     }

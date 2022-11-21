@@ -2,10 +2,12 @@ package co.smart.parking.auth.adaptador;
 
 import co.smart.parking.auth.config.JwTokenProveedor;
 import co.smart.parking.excepcion.ExcepcionCredencialesIncorrectas;
+import co.smart.parking.excepcion.ExcepcionInexistente;
 import co.smart.parking.jwToken.modelo.dto.RespuestaJwToken;
 import co.smart.parking.usuario.modelo.dominio.Usuario;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
@@ -25,12 +27,14 @@ public class Auth {
         try {
             var usuarioAuth = new UsernamePasswordAuthenticationToken(usuario.getNombreUsuario(), usuario.getContrasena());
             var auth = this.authenticationManager.authenticate(usuarioAuth);
-            var token = this.jwTokenProvider.generarToken(usuario);
+            var token = this.jwTokenProvider.generarToken(auth);
             SecurityContextHolder.getContext().setAuthentication(auth);
             return new RespuestaJwToken(token);
 
         } catch (BadCredentialsException e) {
             throw new ExcepcionCredencialesIncorrectas("Credenciales de autenticación incorrectas");
+        } catch (InternalAuthenticationServiceException e) {
+            throw new ExcepcionInexistente(e.getMessage());
         }
     }
 }

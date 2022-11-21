@@ -1,7 +1,7 @@
 package co.smart.parking.auth.config;
 
-import co.smart.parking.auth.adaptador.CargaUsuario;
-import co.smart.parking.auth.adaptador.model.UsuarioDetalle;
+import co.smart.parking.usuario.adaptador.CargaUsuario;
+import co.smart.parking.usuario.model.UsuarioDetalle;
 import co.smart.parking.jwToken.modelo.dto.RespuestaJwToken;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;

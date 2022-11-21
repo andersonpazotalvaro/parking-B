@@ -1,4 +1,4 @@
-package co.smart.parking.auth.adaptador;
+package co.smart.parking.usuario.adaptador;
 
 import co.smart.parking.usuario.consulta.ConsultarUsuario;
 import org.springframework.security.core.userdetails.UserDetails;

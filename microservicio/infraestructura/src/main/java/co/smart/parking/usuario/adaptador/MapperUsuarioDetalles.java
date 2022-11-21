@@ -1,6 +1,6 @@
-package co.smart.parking.auth.adaptador;
+package co.smart.parking.usuario.adaptador;
 
-import co.smart.parking.auth.adaptador.model.UsuarioDetalle;
+import co.smart.parking.usuario.model.UsuarioDetalle;
 import co.smart.parking.rol.adaptador.MapperRol;
 import co.smart.parking.usuario.modelo.dtoRespuesta.RespuestaUsuario;
 import org.springframework.stereotype.Component;

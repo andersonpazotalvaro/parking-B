@@ -23,4 +23,5 @@ public class DaoUsuarioSql implements DaoUsuario {
         var entidad = this.repositorioUsuarioJpa.findByNombreUsuario(nombreUsuario);
         return this.mapperUsuario.crearRespuesta(entidad);
     }
+
 }

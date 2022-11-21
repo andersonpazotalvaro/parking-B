@@ -24,12 +24,15 @@ spring.datasource.driver-class-name=org.postgresql.Driver
 
 
 
-# Configuración JPA
+# Configuraciï¿½n JPA
 spring.jpa.database=POSTGRESQL
 #spring.jpa.properties.hibernate.default_schema=admindirip
 spring.jpa.database-platform=org.hibernate.dialect.PostgreSQL9Dialect
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=false
+
+
+
 
 
 

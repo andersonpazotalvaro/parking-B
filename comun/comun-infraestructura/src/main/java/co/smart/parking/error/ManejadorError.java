@@ -1,13 +1,13 @@
 package co.smart.parking.error;
 
-import co.smart.parking.excepcion.ExcepcionDuplicidad;
-import co.smart.parking.excepcion.ExcepcionInexistente;
+import co.smart.parking.excepcion.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import java.nio.file.AccessDeniedException;
 import java.util.concurrent.ConcurrentHashMap;
 
 @ControllerAdvice
@@ -24,7 +24,9 @@ public class ManejadorError extends ResponseEntityExceptionHandler {
 
         CODIGOS_RESPUESTA.put(ExcepcionDuplicidad.class.getSimpleName(), HttpStatus.BAD_REQUEST.value());
         CODIGOS_RESPUESTA.put(ExcepcionInexistente.class.getSimpleName(), HttpStatus.BAD_REQUEST.value());
-
+        CODIGOS_RESPUESTA.put(ExcepcionArgumentoInvalido.class.getSimpleName(), HttpStatus.BAD_REQUEST.value());
+        CODIGOS_RESPUESTA.put(ExcepcionCredencialesIncorrectas.class.getSimpleName(), HttpStatus.UNAUTHORIZED.value());
+        CODIGOS_RESPUESTA.put(AccessDeniedException.class.getSimpleName(), HttpStatus.UNAUTHORIZED.value());
     }
 
 

@@ -3,6 +3,7 @@ package co.smart.parking.usuario.modelo.dominio;
 import co.smart.parking.ValidadorParametro;
 import lombok.Getter;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Getter
@@ -20,11 +21,11 @@ public class Usuario {
 
         ValidadorParametro.validarValorVacio(nombreUsuario, SE_DEBE_INGRESAR_UN_NOMBRE_DE_USUARIO);
         ValidadorParametro.validarValorVacio(contrasena, String.format(SE_DEBE_INGRESAR_LA_CONTRASEÑA_PARA_EL_USUARIO_S, nombreUsuario));
-       // ValidadorParametro.validarValorNulo(roles, EL_CAMPO_ROLES_NO_DEBE_SER_NULO);
+        //ValidadorParametro.validarValorNulo(roles, EL_CAMPO_ROLES_NO_DEBE_SER_NULO);
 
         this.nombreUsuario = nombreUsuario;
         this.contrasena = contrasena;
-        this.roles = roles;
+        this.roles = ValidadorParametro.validarListaNulaYRetornarInstancia(roles, new HashSet<>());
     }
 }
 

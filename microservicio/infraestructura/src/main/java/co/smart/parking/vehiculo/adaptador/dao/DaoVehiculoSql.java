@@ -23,20 +23,19 @@ public class DaoVehiculoSql implements DaoVehiculo {
     @Override
     public RespuestaVehiculo obtenerVehiculoPorPlaca(String placa) {
         var entidadVehiculo = this.repositorioVehiculoJpa.findByPlaca(placa);
-        return this.mapperVehiculo.crearResponse(entidadVehiculo);
+        return this.mapperVehiculo.crearRespuesta(entidadVehiculo);
     }
 
     @Override
     public List<RespuestaVehiculo> obtenerVehiculos() {
         var entidadVehiculos = this.repositorioVehiculoJpa.findAll();
-
-        return this.mapperVehiculo.crearResponses(entidadVehiculos);
+        return this.mapperVehiculo.crearRespuestas(entidadVehiculos);
     }
 
     @Override
-    public List<RespuestaVehiculo> obtenerVehiculosActivos() {
-        var entidadVehiculos = this.repositorioVehiculoJpa.findByActivoTrue();
-        return this.mapperVehiculo.crearResponses(entidadVehiculos);
+    public List<RespuestaVehiculo> obtenerPorUsuario(String nombreUsuario) {
+        var vehiculos = this.repositorioVehiculoJpa.findAllByNombreUsuario(nombreUsuario);
+        return this.mapperVehiculo.crearRespuestas(vehiculos);
     }
 }
 

@@ -1,2 +1,2 @@
 INSERT INTO public.rol(rol) VALUES ('ESTUDIANTE');
-INSERT INTO public.rol(rol) VALUES ('ADMIN');
+INSERT INTO public.rol(rol) VALUES ('ADMINISTRADOR');

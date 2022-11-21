@@ -9,8 +9,6 @@ import javax.persistence.*;
 public class EntidadRol {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.SEQUENCE )
-    private Long id;
     @Column
     @Enumerated(EnumType.STRING)
     private Role rol;

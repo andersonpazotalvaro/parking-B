@@ -1,19 +1,19 @@
 package co.smart.parking.usuario.consulta;
 
 import co.smart.parking.usuario.modelo.dtoRespuesta.RespuestaUsuario;
-import co.smart.parking.usuario.puerto.dao.DaoUsuario;
+import co.smart.parking.usuario.servicio.ServicioConsultarUsuario;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ConsultarUsuario {
 
-    private final DaoUsuario daoUsuario;
+    private final ServicioConsultarUsuario servicioConsultarUsuario;
 
-    public ConsultarUsuario(DaoUsuario daoUsuario) {
-        this.daoUsuario = daoUsuario;
+    public ConsultarUsuario(ServicioConsultarUsuario servicioConsultarUsuario) {
+        this.servicioConsultarUsuario = servicioConsultarUsuario;
     }
 
     public RespuestaUsuario ejecutar(String nombreUsuario) {
-        return this.daoUsuario.obtenerUsuarioPorNombreDeUsuario(nombreUsuario);
+        return this.servicioConsultarUsuario.ejecutar(nombreUsuario);
     }
 }

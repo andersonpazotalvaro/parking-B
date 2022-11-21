@@ -1,4 +1,4 @@
-package co.smart.parking.auth.adaptador.model;
+package co.smart.parking.usuario.model;
 
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;

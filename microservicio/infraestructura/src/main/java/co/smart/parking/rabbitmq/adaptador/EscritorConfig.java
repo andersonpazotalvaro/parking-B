@@ -9,10 +9,10 @@ import org.springframework.context.annotation.Configuration;
 public class EscritorConfig {
 
     @Value("${parking.queue}")
-    private String mensaje;
+    private String queue;
 
     @Bean
     public Queue queue(){
-        return new Queue(mensaje,true);
+        return new Queue(queue,true);
     }
 }

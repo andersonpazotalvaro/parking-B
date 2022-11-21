@@ -23,7 +23,7 @@ public class ServicioEliminarVehiculo {
     public boolean ejecutar(String placa){
         validarExistencia(placa);
         var vehiculo = this.daoVehiculo.obtenerVehiculoPorPlaca(placa);
-        return this.repositorioVehiculo.eliminarPorId(vehiculo.getId());
+        return this.repositorioVehiculo.eliminarPorPlaca(vehiculo.getPlaca());
     }
 
 

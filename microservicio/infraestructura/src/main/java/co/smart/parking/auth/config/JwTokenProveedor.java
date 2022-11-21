@@ -1,9 +1,10 @@
 package co.smart.parking.auth.config;
 
-import co.smart.parking.usuario.modelo.dominio.Usuario;
+import co.smart.parking.usuario.model.UsuarioDetalle;
 import io.jsonwebtoken.*;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -16,16 +17,18 @@ public class JwTokenProveedor {
 
     private static final String ROLES = "roles";
     private static final int TIME_TO_EXPIRE_TOKEN_IN_MINUTES = 10;
-    private static final int CONVERTER_MINUTES_TO_MILLISECONDS = 5000;
+    private static final int CONVERTER_MINUTES_TO_MILLISECONDS = 60 * 60 * 60;
 
     @Value("${jwt.secret}")
     private String secret;
 
 
-    public String generarToken(Usuario usuario) {
-
-        var roles = usuario.getRoles().stream()
-                .map(rol -> new SimpleGrantedAuthority(rol).getAuthority()).collect(Collectors.toSet());
+    public String generarToken(Authentication authentication) {
+        var usuario = (UsuarioDetalle) authentication.getPrincipal();
+        var roles = usuario.getAuthorities().stream()
+                .map(GrantedAuthority::getAuthority).collect(Collectors.toSet());
+        //var roles = usuario.getRoles().stream()
+          //      .map(rol -> new SimpleGrantedAuthority(rol).getAuthority()).collect(Collectors.toSet());
         return crearToken(usuario, roles);
     }
 
@@ -61,9 +64,9 @@ public class JwTokenProveedor {
     }
 
 
-    private String crearToken(Usuario usuario, Set<String> roles) {
+    private String crearToken(UsuarioDetalle usuarioDetalle, Set<String> roles) {
         return Jwts.builder()
-                .setSubject(usuario.getNombreUsuario())
+                .setSubject(usuarioDetalle.getUsername())
                 .claim(ROLES, roles)
                 .setIssuedAt(new Date(System.currentTimeMillis()))   // Se puede mejorar para no tener que convertir los minutos
                 .setExpiration(new Date(System.currentTimeMillis() + TIME_TO_EXPIRE_TOKEN_IN_MINUTES * CONVERTER_MINUTES_TO_MILLISECONDS))

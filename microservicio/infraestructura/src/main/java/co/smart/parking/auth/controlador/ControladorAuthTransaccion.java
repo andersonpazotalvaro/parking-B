@@ -28,7 +28,7 @@ public class ControladorAuthTransaccion {
     }
 
     @PostMapping
-    public RespuestaJwToken loginUsuario(@RequestBody RequestUsuarioTransaccion requestUsuarioTransaccion){
+    public RespuestaJwToken ingresarUsuario(@RequestBody RequestUsuarioTransaccion requestUsuarioTransaccion){
         var usuario = this.fabricaUsuario.crear(requestUsuarioTransaccion);
         return this.auth.login(usuario);
     }
@@ -36,12 +36,6 @@ public class ControladorAuthTransaccion {
     @PutMapping
     public boolean registrarUsuario(@RequestBody RequestUsuarioTransaccion requestUsuarioTransaccion) {
         return this.manejadorGuardarUsuario.ejecutar(requestUsuarioTransaccion);
-    }
-
-    @GetMapping
-    public void testEscritor(){
-        String mensaje= "test escritor";
-        this.escritorMensaje.escribirMensaje(mensaje);
     }
 
 }

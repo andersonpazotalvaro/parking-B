@@ -23,7 +23,6 @@ public class ServicioGuardarVehiculo {
 
 
     public RespuestaVehiculo ejecutar(Vehiculo vehiculo) {
-
         validarExistencia(vehiculo);
         this.repositorioVehiculo.guardar(vehiculo);
         return this.daoVehiculo.obtenerVehiculoPorPlaca(vehiculo.getPlaca());
