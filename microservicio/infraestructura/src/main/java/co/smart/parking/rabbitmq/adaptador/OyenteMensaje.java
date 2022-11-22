@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class OyenteMensaje implements GsonAdaptador {
     
-    @RabbitListener(queues = "${parking.queue}")
+    //@RabbitListener(queues = "${parking.queue}")
     public void recibirMensaje(String mensaje) {
 
         try {

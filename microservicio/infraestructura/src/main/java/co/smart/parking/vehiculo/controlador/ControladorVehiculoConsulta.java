@@ -26,13 +26,13 @@ public class ControladorVehiculoConsulta {
 
 
     @GetMapping(value = "/{placa}")
-    @PreAuthorize("hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_ESTUDIANTE')")
+    @PreAuthorize("hasAuthority('ADMINISTRADOR') or hasAuthority('ESTUDIANTE')")
     public RespuestaVehiculo consultar(@PathVariable String placa){
         return this.consultaVehiculo.ejecutar(placa);
     }
 
     @GetMapping
-    @PreAuthorize("hasRole('ROLE_ADMINISTRADOR')")
+    @PreAuthorize("hasAuthority('ADMINISTRADOR') or hasAuthority('ESTUDIANTE')")
     public List<RespuestaVehiculo> consultarTodos(){
         return this.consultaVehiculoTodos.ejecutar();
     }

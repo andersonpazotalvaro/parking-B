@@ -1,10 +1,5 @@
 package co.smart.parking.vehiculo.entidad;
 
-import co.smart.parking.usuario.adaptador.entidad.EntidadUsuarioPerfil;
-import co.smart.parking.vehiculo.modelo.dominio.VehiculoMovimiento;
-import lombok.Getter;
-import lombok.Setter;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -16,19 +11,13 @@ public class EntidadVehiculo {
     @Column(unique = true)
     private String placa;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "vehiculo")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "vehiculo")
     private List<EntidadVehiculoMovimiento> vehiculoMovimientos;
-
-    @ManyToOne
-    @JoinColumn(name="usuario_perfil_nombre_usuario", nullable=false)
-    private EntidadUsuarioPerfil entidadUsuarioPerfil;
-
 
     public EntidadVehiculo() { }
 
-    public EntidadVehiculo(String placa, EntidadUsuarioPerfil entidadUsuarioPerfil) {
+    public EntidadVehiculo(String placa) {
         this.placa = placa;
-        this.entidadUsuarioPerfil = entidadUsuarioPerfil;
     }
 
 
@@ -46,13 +35,5 @@ public class EntidadVehiculo {
 
     public void setVehiculoMovimientos(List<EntidadVehiculoMovimiento> vehiculoMovimientos) {
         this.vehiculoMovimientos = vehiculoMovimientos;
-    }
-
-    public EntidadUsuarioPerfil getEntidadUsuarioPerfil() {
-        return entidadUsuarioPerfil;
-    }
-
-    public void setEntidadUsuarioPerfil(EntidadUsuarioPerfil entidadUsuarioPerfil) {
-        this.entidadUsuarioPerfil = entidadUsuarioPerfil;
     }
 }

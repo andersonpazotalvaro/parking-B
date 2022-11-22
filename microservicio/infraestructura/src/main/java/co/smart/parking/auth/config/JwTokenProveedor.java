@@ -27,8 +27,7 @@ public class JwTokenProveedor {
         var usuario = (UsuarioDetalle) authentication.getPrincipal();
         var roles = usuario.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority).collect(Collectors.toSet());
-        //var roles = usuario.getRoles().stream()
-          //      .map(rol -> new SimpleGrantedAuthority(rol).getAuthority()).collect(Collectors.toSet());
+
         return crearToken(usuario, roles);
     }
 
